@@ -23,15 +23,15 @@ public class Location {
         this.pickup=builder.pickup;
     }
 
-    private String getLocationId() {
+    public String getLocationId() {
         return locationId;
     }
 
-    private Dropoff getDropoff() {
+    public Dropoff getDropoff() {
         return dropoff;
     }
 
-    private Pickup getPickup() {
+    public Pickup getPickup() {
         return pickup;
     }
 
