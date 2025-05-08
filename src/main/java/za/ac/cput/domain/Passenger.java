@@ -7,7 +7,7 @@ package za.ac.cput.domain;
 */
 
 public class Passenger {
-    //private fields that stores in
+    //private fields that stores information
     private String passId;
     private String passName;
     private String passSurname;
