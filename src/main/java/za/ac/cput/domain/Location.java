@@ -1,72 +1,53 @@
 package za.ac.cput.domain;
 
+/*
+    Location.java
+    Location builder Class
+    Author:Sharief Abdul
+    Date:08/05/2025
+*/
+
 public class Location {
 
     private String locationId;
-    private String pickupStreet;
-    private String pickupSuburb;
-    private String pickupCity;
-    private String dropoffStreet;
-    private String dropoffSuburb;
-    private String dropoffCity;
+    private Dropoff dropoff;
+    private Pickup pickup;
+
 
 
 
 
     private Location(LocationBuilder builder) {
         this.locationId = builder.locationId;
-        this.pickupStreet = builder.pickupStreet;
-        this.pickupSuburb = builder.pickupSuburb;
-        this.pickupCity = builder.pickupCity;
-        this.dropoffStreet = builder.dropoffStreet;
-        this.dropoffSuburb = builder.dropoffSuburb;
-        this.dropoffCity = builder.dropoffCity;
+        this.dropoff=builder.dropoff;
+        this.pickup=builder.pickup;
     }
 
     private String getLocationId() {
         return locationId;
     }
 
-    private String getPickupStreet() {
-        return pickupStreet;
+    private Dropoff getDropoff() {
+        return dropoff;
     }
 
-    private String getPickupSuburb() {
-        return pickupSuburb;
+    private Pickup getPickup() {
+        return pickup;
     }
 
-    private String getPickupCity() {
-        return pickupCity;
-    }
 
-    private String getDropoffStreet() {
-        return dropoffStreet;
-    }
-
-    private String getDropoffSuburb() {
-        return dropoffSuburb;
-    }
-
-    private String getDropoffCity() {
-        return dropoffCity;
-    }
 
 
 
     @Override
     public String toString() {
         return "Location{" +
-                "locationId='" + locationId + '\'' +
-                ", pickupStreet='" + pickupStreet + '\'' +
-                ", pickupSuburb='" + pickupSuburb + '\'' +
-                ", pickupCity='" + pickupCity + '\'' +
-                ", dropoffStreet='" + dropoffStreet + '\'' +
-                ", dropoffSuburb='" + dropoffSuburb + '\'' +
-                ", dropoffCity='" + dropoffCity + '\'' +
-                '}';
+                "locationId='" + locationId + '\'' ;
     }
 
     public static class LocationBuilder{
+        private Dropoff dropoff;
+        private Pickup pickup;
         private String locationId;
         private String pickupStreet;
         private String pickupSuburb;
@@ -95,18 +76,13 @@ public class Location {
             return this;
         }
 
-        public LocationBuilder setDropoffStreet(String dropoffStreet) {
-            this.dropoffStreet = dropoffStreet;
+        public LocationBuilder setDropoff(Dropoff dropoff) {
+            this.dropoff=dropoff;
             return this;
         }
 
-        public LocationBuilder setDropoffSuburb(String dropoffSuburb) {
-            this.dropoffSuburb = dropoffSuburb;
-            return this;
-        }
-
-        public LocationBuilder setDropoffCity(String dropoffCity) {
-            this.dropoffCity = dropoffCity;
+        public LocationBuilder getPickup() {
+            this.pickup=pickup;
             return this;
         }
 
