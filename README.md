@@ -1,1 +1,1 @@
-![UML drawio](https://github.com/user-attachments/assets/bc9dec55-6145-4d68-9383-6276885c67ae)
+![Capstone UML drawio](https://github.com/user-attachments/assets/fa3a66ba-9df3-4a29-bf81-65d9d05d19b7)
