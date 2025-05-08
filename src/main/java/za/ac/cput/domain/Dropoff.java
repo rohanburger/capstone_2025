@@ -9,34 +9,37 @@ package za.ac.cput.domain;
 
 public class Dropoff {
 
+    private String dropoffId;
     private String dropoffStreet;
     private String dropoffSuburb;
     private String dropoffCity;
 
 
-    public Dropoff(DropoffBuilder builder) {
-
+    private Dropoff(DropoffBuilder builder) {
+        this.dropoffId=builder.dropoffId;
         this.dropoffStreet = builder.dropoffStreet;
         this.dropoffSuburb = builder.dropoffSuburb;
         this.dropoffCity = builder.dropoffCity;
 
     }
+    public String getDropoffId() {return dropoffId;}
 
-    private String getDropoffStreet() {
+    public String getDropoffStreet() {
         return dropoffStreet;
     }
 
-    private String getDropoffSuburb() {
+    public String getDropoffSuburb() {
         return dropoffSuburb;
     }
 
-    private String getDropoffCity() {
+    public String getDropoffCity() {
         return dropoffCity;
     }
 
     @Override
     public String toString() {
         return "Dropoff{" +
+                "dropoffId='" + dropoffId + '\'' +
                 "dropoffStreet='" + dropoffStreet + '\'' +
                 ", dropoffSuburb='" + dropoffSuburb + '\'' +
                 ", dropoffCity='" + dropoffCity + '\'' +
@@ -44,12 +47,18 @@ public class Dropoff {
     }
 
     public static class DropoffBuilder{
+        private String dropoffId;
         private String dropoffStreet;
         private String dropoffSuburb;
         private String dropoffCity;
 
         public DropoffBuilder setDropoffStreet(String dropoffStreet) {
             this.dropoffStreet = dropoffStreet;
+            return this;
+        }
+
+        public DropoffBuilder setDropoffId(String dropoffId){
+            this.dropoffId=dropoffId;
             return this;
         }
 
