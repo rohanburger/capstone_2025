@@ -3,7 +3,7 @@ package za.ac.cput.domain;
     Payment.java
     Payment builder Class
     Author:Rohan Janzen Burger 230171990
-    Date:19/03/2025
+    Date:08/05/2025
 */
 public class Payment {
     private String paymentid;//Initialize all neccesary attributes for the Payment class
