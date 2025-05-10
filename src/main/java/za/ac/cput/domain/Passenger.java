@@ -1,7 +1,7 @@
 package za.ac.cput.domain;
 
 /*  Passenger.java
-    Passenger builder class
+    Passenger POJO class
     Author: Kelsey-Jane Fabe (220328293)
     Date: 08/05/2025
 */
