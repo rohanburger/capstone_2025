@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/*  Pickup.java
+    Passenger POJO class
+    Author: Kelsey-Jane Fabe (220328293)
+    Date: 08/05/2025
+*/
+
 public class Pickup {
     //private fields that stores information for Location
     private String pickupId;
