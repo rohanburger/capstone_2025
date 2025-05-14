@@ -81,7 +81,7 @@ public class Location {
             return this;
         }
 
-        public LocationBuilder getPickup() {
+        public LocationBuilder setPickup(Pickup pickup) {
             this.pickup=pickup;
             return this;
         }
