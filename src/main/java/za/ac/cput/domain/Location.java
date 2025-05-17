@@ -14,7 +14,9 @@ public class Location {
     private Pickup pickup;
 
 
+    public Location() {
 
+    }
 
 
     private Location(LocationBuilder builder) {

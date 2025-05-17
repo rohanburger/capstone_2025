@@ -16,7 +16,7 @@ public class Passenger {
     private BankDetails bankdetails; // linked to BankDetails class
 
     //default constructor
-    private Passenger() {
+    public Passenger() {
     }
 
     //initialises object using PassengerBuilder

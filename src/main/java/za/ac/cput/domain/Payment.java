@@ -9,7 +9,7 @@ public class Payment {
     private String paymentid;//Initialize all neccesary attributes for the Payment class
     private Float paymentamount;
 
-    private Payment() {//Default constructor
+    public Payment() {//Default constructor
     }
 
     private Payment(Builder builder) {//Constructor with he paramenter of the builder

@@ -11,7 +11,6 @@ public class Session {
     private Driver driver;
     private Location location;
     private int passengerCount;
-    private float sessionAmount;
     private String sessionStatus;
     private Payment payment;
 
@@ -25,7 +24,6 @@ public class Session {
         this.location = builder.location;
         this.passengerCount = builder.passengerCount;
         this.sessionStatus = builder.sessionStatus;
-        this.sessionAmount = builder.sessionAmount;
         this.sessionid = builder.sessionid;
         this.payment = builder.payment;
     }
@@ -54,9 +52,7 @@ public class Session {
         return driver;
     }
 
-    public float getSessionAmount() {
-        return sessionAmount;
-    }
+
 
     public String getSessionid() {
         return sessionid;
@@ -70,7 +66,6 @@ public class Session {
                 "Session id: " + sessionid +'\n'+
                 "PassengerCount: "+ passengerCount+ '\n'+
                 "Session Status: " + sessionStatus +'\n'+
-                "Session Amount: " + sessionAmount +'\n'+
                 passenger +'\n'+
                 driver +'\n'+
                 location+'\n'+
@@ -86,7 +81,7 @@ public class Session {
         private Location location;
         private int passengerCount;
         private String sessionStatus;
-        private float sessionAmount;
+
         private Payment payment;
 
 
@@ -118,11 +113,6 @@ public class Session {
             this.sessionStatus = sessionStatus;
             return this;
 
-        }
-
-        public Builder setSessionAmount(float sessionAmount) {
-            this.sessionAmount = sessionAmount;
-            return this;
         }
 
         public Builder setSessionid(String sessionid) {
