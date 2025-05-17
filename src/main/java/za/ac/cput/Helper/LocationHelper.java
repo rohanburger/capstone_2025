@@ -1,5 +1,12 @@
 package za.ac.cput.Helper;
 
+/*
+    LocationHelper.java
+    Location Helper Class
+    Author:Sharief Abdul
+    Date:08/05/2025
+*/
+
 public class LocationHelper {
 
     public static Boolean isEmptyOrNull(String s){
@@ -16,14 +23,9 @@ public static Boolean isNullorEmpty(Object o){
         return false;
 }
 
-    public static Boolean isEqual(Object a, Object b){
-        if(a.equals(b)){
-            return true;
-        }
-        return false;
-    }
 
-    public static Boolean isEqualString(String a, String b){
+
+    public static Boolean isEqual(String a, String b){
         if(a.equals(b)){
             return true;
         }

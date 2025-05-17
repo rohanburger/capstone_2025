@@ -14,6 +14,8 @@ public class Dropoff {
     private String dropoffSuburb;
     private String dropoffCity;
 
+    public Dropoff() {}
+
 
     private Dropoff(DropoffBuilder builder) {
         this.dropoffId=builder.dropoffId;

@@ -14,7 +14,7 @@ public class Pickup {
     private String pickupCity;
 
     //default constructor
-    private Pickup(){
+    public Pickup(){
     }
 
     //initialises object using PickupBuilder
