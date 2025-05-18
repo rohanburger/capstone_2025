@@ -2,9 +2,9 @@ package za.ac.cput.domain;
 
 /*
     Driver.java
-    Driver builder Class
-    Author:Kyle Bowers
-    Date:10/05/2025
+    Driver Builder Class
+    Author: Kyle Bowers
+    Date: 10/05/2025
 */
 
 public class Driver {
@@ -14,18 +14,19 @@ public class Driver {
     private String driverPhoneNum;
     private String driverEmail;
     private String licenseNum;
-
+    private Vehicle vehicle;
 
     public Driver() {
     }
 
     public Driver(Builder builder) {
         this.driverId = builder.driverId;
-        this.driverName =  builder.driverName;
+        this.driverName = builder.driverName;
         this.driverSurname = builder.driverSurname;
         this.driverPhoneNum = builder.driverPhoneNum;
         this.driverEmail = builder.driverEmail;
         this.licenseNum = builder.licenseNum;
+        this.vehicle = builder.vehicle;
     }
 
     public String getDriverId() {
@@ -52,6 +53,10 @@ public class Driver {
         return licenseNum;
     }
 
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
     @Override
     public String toString() {
         return "Driver{" +
@@ -61,16 +66,18 @@ public class Driver {
                 ", driverPhoneNum='" + driverPhoneNum + '\'' +
                 ", driverEmail='" + driverEmail + '\'' +
                 ", licenseNum='" + licenseNum + '\'' +
+                ", vehicle=" + vehicle +
                 '}';
     }
 
-    public static class Builder{
+    public static class Builder {
         private String driverId;
         private String driverName;
         private String driverSurname;
         private String driverPhoneNum;
         private String driverEmail;
         private String licenseNum;
+        private Vehicle vehicle;
 
         public Builder setDriverId(String driverId) {
             this.driverId = driverId;
@@ -101,7 +108,13 @@ public class Driver {
             this.licenseNum = licenseNum;
             return this;
         }
-        public Driver build(){
+
+        public Builder setVehicle(Vehicle vehicle) {
+            this.vehicle = vehicle;
+            return this;
+        }
+
+        public Driver build() {
             return new Driver(this);
         }
     }
