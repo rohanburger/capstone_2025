@@ -47,6 +47,9 @@ public class LocationFactoryTest {
     public void createLocation_PickupEqualsDropoff(){
         Location location=LocationFactory.createLocation("001",dropoff2,pickup2);
         assertNotNull(location);
+        assertEquals(dropoff2.getDropoffStreet(),pickup2.getPickupStreet());
+        assertEquals(dropoff2.getDropoffSuburb(),pickup2.getPickupSuburb());
+        assertEquals(dropoff2.getDropoffCity(),pickup2.getPickupCity());
 
     }
 
