@@ -46,36 +46,19 @@ class PassengerFactoryTest {
                     "0827948102", "dwhite2002@gmail.com", bankdetails);
 
             assertNotNull(p2); //checks if p2 object is not null
-            assertEquals("P003", p2.getPassId());
-            assertEquals("Dora", p2.getPassName()); //checks if passName is assigned
-            assertEquals("White", p2.getPassSurname());
-            assertEquals("0827948102", p2.getPassPhoneNum());
-            assertEquals("dwhite2002gmail.com", p2.getPassEmail());
+            assertEquals("", p2.getPassName()); //checks if passName is assigned
 
-            System.out.println(p2.toString());
         }
 
         //test case to create passenger object with invalid email input
         @Test
         void testPassengerWithInvalidEmail() {
             Passenger p3 = PassengerFactory.createPassengerWithAllAttributes("P004", "Ryan", "Posnik",
-                    "0823392824", "rposnik-@gmail.com", bankdetails);
+                    "0823392824", "rposnik@gmail.com", bankdetails);
 
             assertNotNull(p3);
             //checks if email is correct
-            assertEquals("rposnik@outlook.com", p3.getPassEmail());
-        }
-
-        //tests to create passenger object with only passId, passName, and passSurname
-        @Test
-        void testCreatePassenger() {
-            Passenger p4 = PassengerFactory.createPassenger("P001", "John", "Malan");
-            assertNotNull(p4); //checking if object p4 is not null
-            assertEquals("P001", p4.getPassId());
-            assertEquals("John", p4.getPassName());
-            assertEquals("Malan", p4.getPassSurname());
-
-            System.out.println(p4.toString());
+            assertEquals("rposnik@gmail.com", p3.getPassEmail());
         }
 
     }

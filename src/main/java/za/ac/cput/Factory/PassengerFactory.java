@@ -24,10 +24,9 @@ public class PassengerFactory {
                 PassengerHelper.isNullOrEmpty(passEmail)) {
             System.out.println("Passenger field(s) are empty. Please fill in your information");
             return null;
-
         }
 
-        if(!PassengerHelper.isValidEmail(passEmail)) {
+        if (!PassengerHelper.isValidEmail(passEmail)) {
             System.out.println("Invalid email. Try again");
             return null;
         }
@@ -42,22 +41,6 @@ public class PassengerFactory {
                 .setBankdetails(bankdetails)
                 .build();
 
-    }
-
-    //create Passenger with id, name, and surname attributes
-    public static Passenger createPassenger(String passId, String passName, String passSurname) {
-
-        if((PassengerHelper.isNullOrEmpty(passId) || PassengerHelper.isNullOrEmpty(passName) ||
-                PassengerHelper.isNullOrEmpty(passSurname))) {
-            System.out.println("Passenger field(s) are empty. Please fill in your information");
-           // return null;
-        }
-
-        return new Passenger.PassengerBuilder()
-                .setPassId(passId)
-                .setPassName(passName)
-                .setPassSurname(passSurname)
-                .build();
     }
 
 }
