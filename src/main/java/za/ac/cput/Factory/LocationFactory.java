@@ -22,7 +22,7 @@ public class LocationFactory {
         if(LocationHelper.isNullorEmpty(dropoff)||LocationHelper.isNullorEmpty(pickup)){
             System.out.println("dropoff or pickup location is null or empty");
         }
-        if(LocationHelper.isEqual(pickup.getPickupStreet(), dropoff.getDropoffStreet())||LocationHelper.isEqual(pickup.getPickupSuburb(), dropoff.getDropoffSuburb())||LocationHelper.isEqual(pickup.getPickupCity(), dropoff.getDropoffCity())){
+        if(LocationHelper.isEqual(pickup.getPickupStreet(), dropoff.getDropoffStreet())&&LocationHelper.isEqual(pickup.getPickupSuburb(), dropoff.getDropoffSuburb())&&LocationHelper.isEqual(pickup.getPickupCity(), dropoff.getDropoffCity())){
             System.out.println("Pickup Location cannot be the same as Dropoff Location");
         }
 
