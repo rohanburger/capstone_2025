@@ -20,6 +20,11 @@ public class BankDetails {
     private String bankCardCVV;
     private BankBranch bankBranch; // Added link to BankBranch
 
+    //default constructor
+    public BankDetails() {
+
+    }
+
     // Constructor
     public BankDetails(String bankCardNum, String bankCardDate, String bankCardCVV, BankBranch bankBranch) {
         this.bankCardNum = bankCardNum;
