@@ -7,20 +7,18 @@ package za.ac.cput.domain;
     Date:08/05/2025
 */
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Location {
 
     @Id
     private String locationId;
-    @ManyToOne
+
+    @OneToOne
     @JoinColumn(name = "dropoff_dropoff_id")
     private Dropoff dropoff;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "pickup_pickup_id")
     private Pickup pickup;
 
