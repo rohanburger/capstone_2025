@@ -1,14 +1,17 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 /*
     Dropoff.java
     Dropoff builder Class
     Author:Sharief Abdul
     Date:08/05/2025
 */
-
+@Entity
 public class Dropoff {
-
+    @Id
     private String dropoffId;
     private String dropoffStreet;
     private String dropoffSuburb;
