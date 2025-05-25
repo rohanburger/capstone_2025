@@ -1,11 +1,17 @@
 package za.ac.cput.domain;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 /*
     Payment.java
     Payment builder Class
     Author:Rohan Janzen Burger 230171990
     Date:08/05/2025
 */
+@Entity
 public class Payment {
+    @Id
     private String paymentid;//Initialize all neccesary attributes for the Payment class
     private Float paymentamount;
 

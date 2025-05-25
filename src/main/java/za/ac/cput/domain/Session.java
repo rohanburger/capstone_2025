@@ -1,20 +1,32 @@
 package za.ac.cput.domain;
+
+import jakarta.persistence.*;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
 /*
     Session.java
     Session builder Class
     Author:Rohan Janzen Burger 230171990
     Date:08/05/2025
 */
+@Entity
 public class Session {
+    @Id
     private String sessionid;//Initialize all neccesary attributes
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Passenger passenger;
+    @OneToOne(cascade = CascadeType.ALL)
     private Driver driver;
+    @OneToOne(cascade = CascadeType.ALL)
     private Location location;
     private int passengerCount;
     private String sessionStatus;
+    @OneToOne(cascade = CascadeType.ALL)
     private Payment payment;
 
-    private Session() {//Default constructor
+    protected Session() {//Default constructor
 
     }
 
