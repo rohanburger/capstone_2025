@@ -1,13 +1,17 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 /*  Pickup.java
     Passenger POJO class
     Author: Kelsey-Jane Fabe (220328293)
     Date: 08/05/2025
 */
-
+@Entity
 public class Pickup {
     //private fields that stores information for Location
+    @Id
     private String pickupId;
     private String pickupStreet;
     private String pickupSuburb;
