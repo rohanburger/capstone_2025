@@ -7,8 +7,13 @@ import org.springframework.stereotype.Service;
 import za.ac.cput.Factory.PaymentFactory;
 import za.ac.cput.domain.Payment;
 import za.ac.cput.domain.Session;
-
 import java.util.List;
+/*
+    PaymentServiceTest.java
+    Payment Service Test
+    Author:Rohan Janzen Burger 230171990
+    Date:25/05/2025
+*/
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest

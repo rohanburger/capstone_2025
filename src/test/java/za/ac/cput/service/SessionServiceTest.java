@@ -7,9 +7,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Service;
 import za.ac.cput.Factory.SessionFactory;
 import za.ac.cput.domain.*;
-
 import java.util.List;
-
+/*
+    SessionServiceTest.java
+    Session Service Test
+    Author:Rohan Janzen Burger 230171990
+    Date:25/05/2025
+*/
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class SessionServiceTest {
