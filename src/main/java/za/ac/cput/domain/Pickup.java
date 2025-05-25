@@ -85,6 +85,15 @@ public class Pickup {
             return this;
         }
 
+        //helps update an object in repository
+        public PickupBuilder copy(Pickup pickup) {
+            this.pickupId = pickup.pickupId;
+            this.pickupStreet = pickup.pickupStreet;
+            this.pickupSuburb = pickup.pickupSuburb;
+            this.pickupCity = pickup.pickupCity;
+            return this;
+        }
+
         //builds and returns a new pickup object
         public Pickup build(){
             return new Pickup(this);

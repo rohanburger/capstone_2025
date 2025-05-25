@@ -1,13 +1,18 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
+
 /*  Passenger.java
     Passenger POJO class
     Author: Kelsey-Jane Fabe (220328293)
     Date: 08/05/2025
 */
-
+@Entity
+@Table (name="Passenger")
 public class Passenger {
     //private fields that stores information
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String passId;
     private String passName;
     private String passSurname;
@@ -104,6 +109,17 @@ public class Passenger {
 
         public PassengerBuilder setBankdetails(BankDetails bankdetails) {
             this.bankdetails = bankdetails;
+            return this;
+        }
+
+        //helps update an object in repository
+        public PassengerBuilder copy(Passenger passenger) {
+            this.passId = passenger.passId;
+            this.passName = passenger.passName;
+            this.passSurname = passenger.passSurname;
+            this.passPhoneNum = passenger.passPhoneNum;
+            this.passEmail = passenger.passEmail;
+            this.bankdetails = passenger.bankdetails;
             return this;
         }
 
