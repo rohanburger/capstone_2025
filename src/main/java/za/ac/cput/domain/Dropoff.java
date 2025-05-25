@@ -77,6 +77,14 @@ public class Dropoff {
             return this;
         }
 
+        public DropoffBuilder copy(Dropoff dropoff) {
+            this.dropoffId=dropoff.dropoffId;
+            this.dropoffStreet=dropoff.dropoffStreet;
+            this.dropoffSuburb=dropoff.dropoffSuburb;
+            this.dropoffCity=dropoff.dropoffCity;
+            return this;
+        }
+
         public Dropoff build(){
             return new Dropoff(this);
         }

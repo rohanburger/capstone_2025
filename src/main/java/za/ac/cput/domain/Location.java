@@ -105,6 +105,13 @@ public class Location {
             return this;
         }
 
+        public LocationBuilder copy(Location location) {
+            this.locationId=location.locationId;
+            this.pickup=location.pickup;
+            this.dropoff=location.dropoff;
+            return this;
+        }
+
         public Location build() {
             return new Location(this);
         }
