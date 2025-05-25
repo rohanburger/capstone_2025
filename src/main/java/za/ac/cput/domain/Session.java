@@ -15,15 +15,19 @@ public class Session {
     @Id
     private String sessionid;//Initialize all neccesary attributes
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "passengerId")
     private Passenger passenger;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "driverId")
     private Driver driver;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "locationId")
     private Location location;
     private int passengerCount;
     private String sessionStatus;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "paymentId")
     private Payment payment;
 
     protected Session() {//Default constructor
