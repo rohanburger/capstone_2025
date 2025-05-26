@@ -1,42 +1,44 @@
 package za.ac.cput.service;
+
 /*
-    LocationService.java
-    Location Service Class
+    DropoffService.java
+    Dropoff Service Class
     Author:Sharief Abdul
     Date:08/05/2025
 */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import za.ac.cput.domain.Dropoff;
 import za.ac.cput.domain.Location;
+import za.ac.cput.repository.DropoffRepository;
 import za.ac.cput.repository.LocationRepository;
 
 import java.util.List;
-
 @Service
-public class LocationService implements LocationServiceImpl{
+public class DropoffService implements DropoffServiceImpl{
 
     @Autowired
-    private static LocationServiceImpl service;
+    private static DropoffServiceImpl service;
 
 
-    private LocationRepository repository;
+    private DropoffRepository repository;
 
 
 
     @Override
-    public Location create(Location location) {
-        return this.repository.save(location);
+    public Dropoff create(Dropoff dropoff) {
+        return this.repository.save(dropoff);
     }
 
     @Override
-    public Location read(String s) {
+    public Dropoff read(String s) {
         return this.repository.findById(s).orElse(null);
     }
 
     @Override
-    public Location update(Location location) {
-        return this.repository.save(location);
+    public Dropoff update(Dropoff dropoff) {
+        return this.repository.save(dropoff);
     }
 
     @Override
@@ -46,7 +48,8 @@ public class LocationService implements LocationServiceImpl{
     }
 
     @Override
-    public List<Location> getall() {
+    public List<Dropoff> getall() {
         return this.repository.findAll();
     }
+
 }
