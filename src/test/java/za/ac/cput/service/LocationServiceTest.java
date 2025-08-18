@@ -1,4 +1,4 @@
-package Service;
+package za.ac.cput.service;
 
 /*
     LocationServiceTest.java
@@ -17,7 +17,6 @@ import za.ac.cput.Factory.LocationFactory;
 import za.ac.cput.domain.Dropoff;
 import za.ac.cput.domain.Location;
 import za.ac.cput.domain.Pickup;
-import za.ac.cput.service.LocationService;
 import za.ac.cput.service.LocationServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
