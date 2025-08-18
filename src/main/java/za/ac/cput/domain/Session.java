@@ -11,13 +11,15 @@ import jakarta.persistence.OneToOne;
     Date:08/05/2025
 */
 @Entity
+@Table (name="Session")
 public class Session {
     @Id
-    private String sessionid;//Initialize all neccesary attributes
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long sessionid;//Initialize all neccesary attributes
 
     @OneToOne
     @JoinColumn(name = "passengerId")
-    private Passenger passenger;
+    private User user;
     @OneToOne
     @JoinColumn(name = "driverId")
     private Driver driver;
@@ -35,7 +37,7 @@ public class Session {
     }
 
     private Session(Builder builder) {//Constructor witht he paramenter of the builder
-        this.passenger = builder.passenger;//The Builder attributes are assigned the values from the builder pattern
+        this.user = builder.user;//The Builder attributes are assigned the values from the builder pattern
         this.driver = builder.driver;
         this.location = builder.location;
         this.passengerCount = builder.passengerCount;
@@ -44,8 +46,8 @@ public class Session {
         this.payment = builder.payment;
     }
 
-    public Passenger getPassenger() {//Get method retrieving the value
-        return passenger;
+    public User getUser() {//Get method retrieving the value
+        return user;
     }
 
     public String getSessionStatus() {
@@ -68,9 +70,7 @@ public class Session {
         return driver;
     }
 
-
-
-    public String getSessionid() {
+    public Long getSessionid() {
         return sessionid;
     }
 
@@ -82,7 +82,7 @@ public class Session {
                 "Session id: " + sessionid +'\n'+
                 "PassengerCount: "+ passengerCount+ '\n'+
                 "Session Status: " + sessionStatus +'\n'+
-                passenger +'\n'+
+                user +'\n'+
                 driver +'\n'+
                 location+'\n'+
                 payment +'\n'+
@@ -91,8 +91,8 @@ public class Session {
 
 
     public static class Builder {//Builder class contained inside of the domain class
-        private String sessionid;//Attributes for the builder class
-        private Passenger passenger;
+        private Long sessionid;//Attributes for the builder class
+        private User user;
         private Driver driver;
         private Location location;
         private int passengerCount;
@@ -101,8 +101,8 @@ public class Session {
         private Payment payment;
 
 
-        public Builder setPassenger(Passenger passenger) {//Method with paramters that sets the value of the attribute ,expects a return of type builder
-            this.passenger = passenger;
+        public Builder setPassenger(User user) {//Method with paramters that sets the value of the attribute ,expects a return of type builder
+            this.user = user;
             return this;
 
         }
@@ -131,13 +131,24 @@ public class Session {
 
         }
 
-        public Builder setSessionid(String sessionid) {
+        public Builder setSessionid(Long sessionid) {
             this.sessionid = sessionid;
             return this;
         }
 
         public Builder setPayment(Payment payment) {
             this.payment = payment;
+            return this;
+        }
+
+        public Builder copy(Session session){
+            this.user=session.user;
+            this.driver=session.driver;
+            this.location=session.location;
+            this.passengerCount=session.passengerCount;
+            this.sessionStatus=session.sessionStatus;
+            this.sessionid=session.sessionid;
+            this.payment=session.payment;
             return this;
         }
 

@@ -4,24 +4,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Payment;
 import za.ac.cput.repository.PaymentRepository;
+import za.ac.cput.service.Interfaces.IPaymentService;
 
 import java.util.List;
 
 @Service
 public class PaymentService implements IPaymentService {
 
-    @Autowired
-    private static IPaymentService service;
-    private static PaymentRepository repository;
+    private final  PaymentRepository repository;
 
+    @Autowired public PaymentService(PaymentRepository repository){
+        this.repository = repository;
+    }
     @Override
     public Payment create(Payment payment) {
-        return repository.save(payment);
+        return this.repository.save(payment);
     }
 
     @Override
-    public Payment read(String s) {
-        return repository.findById(s).orElse(null);
+    public Payment read(Long s) {
+        return this.repository.findById(s).orElse(null);
     }
 
     @Override
@@ -30,13 +32,13 @@ public class PaymentService implements IPaymentService {
     }
 
     @Override
-    public boolean delete(String s) {
+    public boolean delete(Long s) {
         repository.deleteById(s);
         return true;
     }
 
     @Override
     public List<Payment> getAll() {
-        return repository.findAll();
+        return this.repository.findAll();
     }
 }

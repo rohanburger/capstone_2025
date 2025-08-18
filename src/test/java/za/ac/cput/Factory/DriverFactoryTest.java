@@ -1,8 +1,8 @@
 package za.ac.cput.Factory;
 
+import org.junit.jupiter.api.BeforeEach;
 import za.ac.cput.domain.Driver;
 import za.ac.cput.domain.Vehicle;
-import za.ac.cput.Helper.VehicleHelper;
 
 /*
     DriverFactoryTest.java
@@ -12,42 +12,60 @@ import za.ac.cput.Helper.VehicleHelper;
 */
 
 import org.junit.jupiter.api.Test;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DriverFactoryTest {
+    private  Set<Vehicle> vehicle;
+
+    @BeforeEach
+    public void setUp() {
+        vehicle  = new HashSet<>();
+        vehicle.add(VehicleFactory.createVehicle("CW456890"));
+    }
 
     @Test
-    public void testCreateDriverSuccess() {
-        Vehicle vehicle = VehicleHelper.createSampleVehicle();
-        Driver driver = DriverFactory.createDriver(
-                "D100",
-                "Kyle",
-                "Bowers",
-                "0812708822",
-                "kylebowers60@gmail.com",
-                "LIC101",
-                vehicle
-        );
-
+    public void InvalidDriverName() {
+        Driver driver = DriverFactory.createDriver("", "Bowers", "0812708822", "kylebowers60@gmail.com",
+                "LIC101",vehicle);
         assertNotNull(driver);
-        assertEquals("Kyle", driver.getDriverName());
-        assertEquals("Bowers", driver.getDriverSurname());
-        assertEquals("kylebowers60@gmail.com", driver.getDriverEmail());
-        assertEquals(vehicle, driver.getVehicle());
+        assertEquals("", driver.getDriverName());
     }
 
     @Test
-    public void testCreateDriverWithNullVehicleShouldFail() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            DriverFactory.createDriver(
-                    "D101",
-                    "Romano",
-                    "Christians",
-                    "0727196078",
-                    "romanochristians@gmail.com",
-                    "LIC102",
-                    null
-            );
-        });
+    public void InvalidDriverSurname(){
+        Driver driver = DriverFactory.createDriver("Kyle", "", "0812708822", "kylebowers60@gmail.com",
+                "LIC101",vehicle);
+        assertNotNull(driver);
+        assertEquals("", driver.getDriverSurname());
     }
+
+    @Test
+    public void InvalidDriverPhoneNumber(){
+        Driver driver = DriverFactory.createDriver("Kyle", "Bowers", "", "kylebowers60@gmail.com",
+                "LIC101",vehicle);
+        assertNotNull(driver);
+        assertEquals("", driver.getDriverPhoneNum());
+    }
+
+    @Test
+    public void InvalidDriverEmail(){
+        Driver driver = DriverFactory.createDriver("Kyle", "Bowers", "0812708822", "",
+                "LIC101",vehicle);
+        assertNotNull(driver);
+        assertEquals("", driver.getDriverEmail());
+    }
+
+    @Test
+    public void InvalidLicenceNum(){
+        Driver driver = DriverFactory.createDriver("Kyle", "Bowers", "0812708822", "kylebowers60@gmail.com",
+                "",vehicle);
+        assertNotNull(driver);
+        assertEquals("", driver.getLicenseNum());
+    }
+
+
 }

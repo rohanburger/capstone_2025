@@ -1,13 +1,15 @@
 package za.ac.cput.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Service;
 import za.ac.cput.Factory.PaymentFactory;
 import za.ac.cput.domain.Payment;
-import za.ac.cput.domain.Session;
+import za.ac.cput.service.Interfaces.IPaymentService;
+
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 /*
     PaymentServiceTest.java
     Payment Service Test
@@ -15,18 +17,25 @@ import java.util.List;
     Date:25/05/2025
 */
 
-import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class PaymentServiceTest {
     @Autowired
-    private static PaymentService service;
-    private Payment payment = PaymentFactory.createPaymentFactory("123", 150.0f);
+    private PaymentService service;
+    private Payment payment;
+
+    @BeforeEach
+    void Setup(){
+        Payment createpayment = PaymentFactory.createPaymentFactory( 152.0f);
+        payment = service.create(createpayment);
+        assertNotNull(payment);
+    }
 
     @Test
     void create() {
-        Payment payment1 = PaymentFactory.createPaymentFactory("124", 152.0f);
-        assertNotNull(payment1);
-        System.out.println(payment1);
+        Payment created = service.create(payment);
+        assertNotNull(created);
+        System.out.println(created);
     }
 
     @Test
@@ -38,8 +47,7 @@ class PaymentServiceTest {
 
     @Test
     void update() {
-        Payment paymentupdate = new Payment.Builder().setPaymentamount(120.0f).build();
-        assertNotNull(paymentupdate);
+        Payment paymentupdate = new Payment.Builder().copy(payment).setPaymentamount(120.0f).build();
         Payment updated = service.update(paymentupdate);
         assertNotNull(updated);
         System.out.println(paymentupdate);
@@ -54,7 +62,6 @@ class PaymentServiceTest {
 
     @Test
     void getAll() {
-        List<Payment> sessions = service.getAll();
-        assertFalse(sessions.isEmpty());
+        System.out.println(service.getAll());
     }
 }

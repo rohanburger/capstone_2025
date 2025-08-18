@@ -1,7 +1,6 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /*
     Payment.java
@@ -10,12 +9,14 @@ import jakarta.persistence.Id;
     Date:08/05/2025
 */
 @Entity
+@Table(name="Payment")
 public class Payment {
     @Id
-    private String paymentid;//Initialize all neccesary attributes for the Payment class
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long paymentid;//Initialize all neccesary attributes for the Payment class
     private Float paymentamount;
 
-    public Payment() {//Default constructor
+    protected Payment() {//Default constructor
     }
 
     private Payment(Builder builder) {//Constructor with he paramenter of the builder
@@ -23,7 +24,7 @@ public class Payment {
         this.paymentamount = builder.paymentamount;
     }
 
-    public String getPaymentid() {//Get method retrieving the value
+    public Long getPaymentid() {//Get method retrieving the value
         return paymentid;
     }
 
@@ -40,16 +41,22 @@ public class Payment {
     }
 
     public static class Builder{//Builder class contained inside of the domain class
-        private String paymentid;//Attributes for the builder class
+        private Long paymentid;//Attributes for the builder class
         private Float paymentamount;
 
-        public Builder setPaymentid(String paymentid) {//Method with paramters that sets the value of the attribute ,expects a return of type builder
+        public Builder setPaymentid(Long paymentid) {//Method with paramters that sets the value of the attribute ,expects a return of type builder
             this.paymentid = paymentid;
             return this;
         }
 
         public Builder setPaymentamount(Float paymentamount) {
             this.paymentamount = paymentamount;
+            return this;
+        }
+
+        public Builder copy(Payment payment){
+            this.paymentid=payment.paymentid;
+            this.paymentamount=payment.paymentamount;
             return this;
         }
 

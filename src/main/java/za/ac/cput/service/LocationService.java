@@ -5,27 +5,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Location;
 import za.ac.cput.repository.LocationRepository;
+import za.ac.cput.service.Interfaces.ILocationService;
 
 import java.util.List;
 
 @Service
-public class LocationService implements LocationServiceImpl{
-
-    @Autowired
-    private static LocationServiceImpl service;
-
+public class LocationService implements ILocationService {
 
     private LocationRepository repository;
-
-
-
+    @Autowired
+    public LocationService(LocationRepository repository){
+        this.repository = repository;
+    }
     @Override
     public Location create(Location location) {
         return this.repository.save(location);
     }
 
     @Override
-    public Location read(String s) {
+    public Location read(Long s) {
         return this.repository.findById(s).orElse(null);
     }
 
@@ -35,7 +33,7 @@ public class LocationService implements LocationServiceImpl{
     }
 
     @Override
-    public boolean delete(String s) {
+    public boolean delete(Long s) {
         this.repository.deleteById(s);
         return true;
     }

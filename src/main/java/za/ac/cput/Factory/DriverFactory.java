@@ -1,7 +1,10 @@
 package za.ac.cput.Factory;
 
+import za.ac.cput.Helper.Helper;
 import za.ac.cput.domain.Driver;
 import za.ac.cput.domain.Vehicle;
+
+import java.util.Set;
 
 /*
     DriverFactory.java
@@ -11,18 +14,16 @@ import za.ac.cput.domain.Vehicle;
 */
 
 public class DriverFactory {
-    public static Driver createDriver(String driverId, String driverName, String driverSurname,
+    public static Driver createDriver( String driverName, String driverSurname,
                                       String driverPhoneNum, String driverEmail, String licenseNum,
-                                      Vehicle vehicle) {
-        if (driverId == null || driverId.isEmpty())
-            throw new IllegalArgumentException("Driver ID is required");
-        if (driverName == null || driverName.isEmpty())
-            throw new IllegalArgumentException("Driver name is required");
-        if (vehicle == null)
-            throw new IllegalArgumentException("Vehicle cannot be null");
+                                      Set<Vehicle> vehicle) {
+
+        if (Helper.isNullOrEmpty(driverName) || Helper.isNullOrEmpty(driverSurname)||Helper.isNullOrEmpty(driverPhoneNum)||
+                Helper.isNullOrEmpty(driverEmail)||Helper.isNullOrEmpty(licenseNum)){
+            System.out.println( "Error: Driver details are null or empty");
+        }
 
         return new Driver.Builder()
-                .setDriverId(driverId)
                 .setDriverName(driverName)
                 .setDriverSurname(driverSurname)
                 .setDriverPhoneNum(driverPhoneNum)

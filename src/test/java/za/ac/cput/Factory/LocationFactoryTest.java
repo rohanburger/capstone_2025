@@ -17,40 +17,22 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 */
 
 public class LocationFactoryTest {
-
-    private String locationId;
-    private Dropoff dropoff,dropoff2;
-    private Pickup pickup,pickup2;
+    private Dropoff dropoff;
+    private Pickup pickup;
 
     @BeforeEach
     public void setUp(){
-        dropoff=new Dropoff();
-        pickup=new Pickup();
-
-        dropoff2=DropoffFactory.createDropoff("001","35 Hoodwink","Claremont","Cape Town");
-        pickup2=new Pickup.PickupBuilder()
-                .setPickupId("001")
-                .setpickupStreet("35 Hoodwink")
-                .setPickupSuburb("Claremont")
-                .setPickupCity("Cape Town").build();
+        dropoff=DropoffFactory.createDropoff("35 Hoodwink","Claremont","Cape Town");
+        pickup =PickupFactory.createPickupWithAttributes("35 Hoodwink","Claremont","Cape Town");
     }
 
     @Test
-    public void createLocation_LocationIdNullOrEmpty(){
-        Location location=LocationFactory.createLocation("",dropoff,pickup);
+     void createLocation_PickupEqualsDropoff(){
+        Location location=LocationFactory.createLocation(dropoff,pickup);
         assertNotNull(location);
-        assertEquals("",location.getLocationId());
-
-    }
-
-    @Test
-    public void createLocation_PickupEqualsDropoff(){
-        Location location=LocationFactory.createLocation("001",dropoff2,pickup2);
-        assertNotNull(location);
-        assertEquals(dropoff2.getDropoffStreet(),pickup2.getPickupStreet());
-        assertEquals(dropoff2.getDropoffSuburb(),pickup2.getPickupSuburb());
-        assertEquals(dropoff2.getDropoffCity(),pickup2.getPickupCity());
-
+        assertEquals(dropoff.getDropoffStreet(),pickup.getPickupStreet());
+        assertEquals(dropoff.getDropoffSuburb(),pickup.getPickupSuburb());
+        assertEquals(dropoff.getDropoffCity(),pickup.getPickupCity());
     }
 
 

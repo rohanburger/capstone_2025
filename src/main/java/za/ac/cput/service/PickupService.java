@@ -4,21 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Pickup;
 import za.ac.cput.repository.PickupRepository;
+import za.ac.cput.service.Interfaces.IPickupService;
 
 import java.util.List;
 
 @Service
-public class PickupService implements IPickupService{
-    @Autowired
-    private static IPickupService service;
+public class PickupService implements IPickupService {
 
     private PickupRepository repository;
-
-    public static IPickupService getService(){
-        if(service == null){
-            service = new PickupService();
-        }
-        return service;
+    @Autowired
+    public PickupService(PickupRepository repository){
+        this.repository = repository;
     }
 
     @Override
@@ -27,7 +23,7 @@ public class PickupService implements IPickupService{
     }
 
     @Override
-    public Pickup read(String id) {
+    public Pickup read(Long id) {
         return repository.findById(id).orElse(null);
     }
 
@@ -37,7 +33,7 @@ public class PickupService implements IPickupService{
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(Long id) {
         repository.deleteById(id);
         return true;
     }

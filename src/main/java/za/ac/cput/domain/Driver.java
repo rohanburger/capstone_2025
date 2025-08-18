@@ -1,20 +1,29 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
+
+import java.util.Set;
+
 /*
     Driver.java
     Driver Builder Class
     Author: Kyle Bowers
     Date: 10/05/2025
 */
-
+@Entity
+@Table (name="Driver")
 public class Driver {
-    private String driverId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long driverId;
     private String driverName;
     private String driverSurname;
     private String driverPhoneNum;
     private String driverEmail;
     private String licenseNum;
-    private Vehicle vehicle;
+    @OneToMany
+    @JoinColumn(name = "driver_Id")
+    private Set<Vehicle> vehicles;
 
     public Driver() {
     }
@@ -26,10 +35,10 @@ public class Driver {
         this.driverPhoneNum = builder.driverPhoneNum;
         this.driverEmail = builder.driverEmail;
         this.licenseNum = builder.licenseNum;
-        this.vehicle = builder.vehicle;
+        this.vehicles = builder.vehicles;
     }
 
-    public String getDriverId() {
+    public Long getDriverId() {
         return driverId;
     }
 
@@ -53,8 +62,8 @@ public class Driver {
         return licenseNum;
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
+    public Set<Vehicle> getVehicle() {
+        return vehicles;
     }
 
     @Override
@@ -66,20 +75,20 @@ public class Driver {
                 ", driverPhoneNum='" + driverPhoneNum + '\'' +
                 ", driverEmail='" + driverEmail + '\'' +
                 ", licenseNum='" + licenseNum + '\'' +
-                ", vehicle=" + vehicle +
+                ", vehicle=" + vehicles +
                 '}';
     }
 
     public static class Builder {
-        private String driverId;
+        private Long driverId;
         private String driverName;
         private String driverSurname;
         private String driverPhoneNum;
         private String driverEmail;
         private String licenseNum;
-        private Vehicle vehicle;
+        private Set<Vehicle> vehicles;
 
-        public Builder setDriverId(String driverId) {
+        public Builder setDriverId(Long driverId) {
             this.driverId = driverId;
             return this;
         }
@@ -109,8 +118,19 @@ public class Driver {
             return this;
         }
 
-        public Builder setVehicle(Vehicle vehicle) {
-            this.vehicle = vehicle;
+        public Builder setVehicle(Set<Vehicle> vehicle) {
+            this.vehicles = vehicle;
+            return this;
+        }
+
+        public Builder copy(Driver driver) {
+            this.driverId = driver.driverId;
+            this.driverName = driver.driverName;
+            this.driverSurname = driver.driverSurname;
+            this.driverPhoneNum = driver.driverPhoneNum;
+            this.driverEmail = driver.driverEmail;
+            this.licenseNum = driver.licenseNum;
+            this.vehicles = driver.vehicles;
             return this;
         }
 

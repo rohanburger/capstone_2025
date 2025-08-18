@@ -4,9 +4,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Pickup;
 import za.ac.cput.domain.Session;
+/*
+    SessionRepository.java
+    Session Repository Class
+    Author:Rohan Janzen Burger 230171990
+    Date:18/08/2025
+*/
 @Repository
-public interface SessionRepository extends JpaRepository<Session, String> {
-
-    Session findBySessionId(String sessionId);
+public interface SessionRepository extends JpaRepository<Session, Long> {
 
 }

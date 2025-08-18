@@ -4,15 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Session;
 import za.ac.cput.repository.SessionRepository;
+import za.ac.cput.service.Interfaces.ISessionService;
 
 import java.util.List;
 
 @Service
 public class SessionService implements ISessionService {
 
-    @Autowired
-    private static ISessionService service;
-    private static SessionRepository repository;
+    private SessionRepository repository;
+
+    @Autowired SessionService(SessionRepository repository){
+        this.repository = repository;
+    }
 
     @Override
     public Session create(Session session) {
@@ -20,8 +23,8 @@ public class SessionService implements ISessionService {
     }
 
     @Override
-    public Session read(String s) {
-        return repository.findBySessionId(s);
+    public Session read(Long s) {
+        return repository.findById(s).orElse(null);
     }
 
     @Override
@@ -30,7 +33,7 @@ public class SessionService implements ISessionService {
     }
 
     @Override
-    public boolean delete(String s) {
+    public boolean delete(Long s) {
         repository.deleteById(s);
         return true;
     }

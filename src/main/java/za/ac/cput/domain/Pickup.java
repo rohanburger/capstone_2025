@@ -1,7 +1,6 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /*  Pickup.java
     Passenger POJO class
@@ -9,10 +8,12 @@ import jakarta.persistence.Id;
     Date: 08/05/2025
 */
 @Entity
+@Table(name="Pickup")
 public class Pickup {
     //private fields that stores information for Location
     @Id
-    private String pickupId;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long pickupId;
     private String pickupStreet;
     private String pickupSuburb;
     private String pickupCity;
@@ -30,7 +31,7 @@ public class Pickup {
     }
 
     //getter methods used to retrieve values
-    public String getPickupId() {
+    public Long getPickupId() {
         return pickupId;
     }
 
@@ -59,13 +60,13 @@ public class Pickup {
 
     //constructs pickup objects
     public static class PickupBuilder{
-        private String pickupId;
+        private Long pickupId;
         private String pickupStreet;
         private String pickupSuburb;
         private String pickupCity;
 
         //return builder objects
-        public Pickup.PickupBuilder setPickupId(String pickupId){
+        public Pickup.PickupBuilder setPickupId(Long pickupId){
             this.pickupId = pickupId;
             return this;
         }

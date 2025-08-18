@@ -7,33 +7,45 @@ Date: 8 May 2025
 
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
+
 /*
  * BankDetails.java
  * Stores user's bank card information.
  * Author: RD Christians (230588204)
  * Date: 08 May 2025
  */
-
+@Entity
+@Table (name="BankDetails")
 public class BankDetails {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long backDetailsId;
     private String bankCardNum;
     private String bankCardDate;
     private String bankCardCVV;
+    @ManyToOne
+    @JoinColumn(name = "bankBranchId")
     private BankBranch bankBranch; // Added link to BankBranch
 
     //default constructor
-    public BankDetails() {
+    protected BankDetails() {
 
     }
 
     // Constructor
-    public BankDetails(String bankCardNum, String bankCardDate, String bankCardCVV, BankBranch bankBranch) {
-        this.bankCardNum = bankCardNum;
-        this.bankCardDate = bankCardDate;
-        this.bankCardCVV = bankCardCVV;
-        this.bankBranch = bankBranch;
+    private BankDetails(Builder builder) {
+        this.backDetailsId = builder.backDetailsId;
+        this.bankCardNum = builder.bankCardNum;
+        this.bankCardDate = builder.bankCardDate;
+        this.bankCardCVV = builder.bankCardCVV;
+        this.bankBranch = builder.bankBranch;
     }
 
     // Getters
+    public Long getBackDetailsId() {
+        return backDetailsId;
+    }
     public String getBankCardNum() {
         return bankCardNum;
     }
@@ -63,11 +75,16 @@ public class BankDetails {
 
     // Builder pattern for easy object creation
     public static class Builder {
+        private Long backDetailsId;
         private String bankCardNum;
         private String bankCardDate;
         private String bankCardCVV;
         private BankBranch bankBranch;
 
+        public Builder setBackDetailsId(Long backDetailsId) {
+            this.backDetailsId = backDetailsId;
+            return this;
+        }
         public Builder setBankCardNum(String bankCardNum) {
             this.bankCardNum = bankCardNum;
             return this;
@@ -88,8 +105,17 @@ public class BankDetails {
             return this;
         }
 
+        public Builder copy(BankDetails bankDetails) {
+            this.backDetailsId = bankDetails.backDetailsId;
+            this.bankCardNum = bankDetails.bankCardNum;
+            this.bankCardDate = bankDetails.bankCardDate;
+            this.bankCardCVV = bankDetails.bankCardCVV;
+            this.bankBranch = bankDetails.bankBranch;
+            return this;
+        }
+
         public BankDetails build() {
-            return new BankDetails(bankCardNum, bankCardDate, bankCardCVV, bankBranch);
+            return new BankDetails(this);
         }
     }
 }

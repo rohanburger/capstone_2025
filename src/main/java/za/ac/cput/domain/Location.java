@@ -10,31 +10,23 @@ package za.ac.cput.domain;
 import jakarta.persistence.*;
 
 @Entity
+@Table (name="Location")
 public class Location {
 
     @Id
-    private String locationId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long locationId;
 
     @OneToOne
-    @JoinColumn(name = "dropoff_dropoff_id")
+    @JoinColumn(name = "dropoffId")
     private Dropoff dropoff;
+
     @OneToOne
-    @JoinColumn(name = "pickup_pickup_id")
+    @JoinColumn(name = "pickupId")
     private Pickup pickup;
 
-    public void setPickup(Pickup pickup) {
-        this.pickup = pickup;
+    protected Location() {
     }
-
-    public void setDropoff(Dropoff dropoff) {
-        this.dropoff = dropoff;
-    }
-
-
-    public Location() {
-
-    }
-
 
     private Location(LocationBuilder builder) {
         this.locationId = builder.locationId;
@@ -42,7 +34,7 @@ public class Location {
         this.pickup=builder.pickup;
     }
 
-    public String getLocationId() {
+    public Long getLocationId() {
         return locationId;
     }
 
@@ -55,43 +47,23 @@ public class Location {
     }
 
 
-
-
-
     @Override
     public String toString() {
         return "Location{" +
-                "locationId='" + locationId + '\'' ;
+                "locationId='" + locationId + '\'' +
+                ", dropoff=" + dropoff +
+                ", pickup=" + pickup +
+                '}';
     }
 
     public static class LocationBuilder{
         private Dropoff dropoff;
         private Pickup pickup;
-        private String locationId;
-        private String pickupStreet;
-        private String pickupSuburb;
-        private String pickupCity;
-        private String dropoffStreet;
-        private String dropoffSuburb;
-        private String dropoffCity;
+        private Long locationId;
 
-        public LocationBuilder setLocationId(String locationId) {
+
+        public LocationBuilder setLocationId(Long locationId) {
             this.locationId = locationId;
-            return this;
-        }
-
-        public LocationBuilder setPickupStreet(String pickupStreet) {
-            this.pickupStreet = pickupStreet;
-            return this;
-        }
-
-        public LocationBuilder setPickupSuburb(String pickupSuburb) {
-            this.pickupSuburb = pickupSuburb;
-            return this;
-        }
-
-        public LocationBuilder setPickupCity(String pickupCity) {
-            this.pickupCity = pickupCity;
             return this;
         }
 
@@ -102,6 +74,13 @@ public class Location {
 
         public LocationBuilder setPickup(Pickup pickup) {
             this.pickup=pickup;
+            return this;
+        }
+
+        public LocationBuilder copy(Location location){
+            this.locationId=location.locationId;
+            this.dropoff=location.dropoff;
+            this.pickup=location.pickup;
             return this;
         }
 

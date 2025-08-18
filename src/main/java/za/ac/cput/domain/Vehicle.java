@@ -1,42 +1,69 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
+
 /*
     Vehicle.java
     Vehicle builder Class
     Author:Kyle Bowers
     Date:10/05/2025
 */
-
+@Entity
+@Table(name="Vehicle")
 public class Vehicle {
-    private String vehicleId;
-    private String licenseNum;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long vehicleId;
+    private String licensePlateNum;
 
-    public Vehicle(String vehicleId, String licenseNum) {
-        this.vehicleId = vehicleId;
-        this.licenseNum = licenseNum;
+
+
+    protected Vehicle() {
     }
 
-    public String getVehicleId() {
+    private Vehicle(Builder builder) {
+        this.vehicleId = builder.vehicleId;
+        this.licensePlateNum = builder.licensePlateNum;
+    }
+
+    public Long getVehicleId() {
         return vehicleId;
     }
 
-    public String getLicenseNum() {
-        return licenseNum;
-    }
-
-    public void setVehicleId(String vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
-    public void setLicenseNum(String licenseNum) {
-        this.licenseNum = licenseNum;
+    public String getLicensePlateNum() {
+        return licensePlateNum;
     }
 
     @Override
     public String toString() {
         return "Vehicle{" +
                 "vehicleId='" + vehicleId + '\'' +
-                ", licenseNum='" + licenseNum + '\'' +
+                ", licenseNum='" + licensePlateNum + '\'' +
                 '}';
+    }
+
+    public static class Builder {
+        private Long vehicleId;
+        private String licensePlateNum;
+
+        public Builder setVehicleId(Long vehicleId) {
+            this.vehicleId = vehicleId;
+            return this;
+        }
+
+        public Builder setLicensePlateNum(String licensePlateNum) {
+            this.licensePlateNum = licensePlateNum;
+            return this;
+        }
+
+        public Builder copy(Vehicle vehicle) {
+            this.vehicleId = vehicle.vehicleId;
+            this.licensePlateNum = vehicle.licensePlateNum;
+            return this;
+        }
+
+        public Vehicle build() {
+            return new Vehicle(this);
+        }
     }
 }

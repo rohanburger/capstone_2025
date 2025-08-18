@@ -12,31 +12,32 @@ import za.ac.cput.domain.Pickup;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+
 class PickupFactoryTest {
 
     //check pickup object with all attributes test case
     @Test
-    void createPickupWithAttributes() {
-        Pickup pickupInfo = PickupFactory.createPickupWithAttributes("PU123", "Mackles Rd", "Woodstock", "Cape Town");
-
-        assertNotNull(pickupInfo); //checks if pickupInfo is not null
+    void InvalidPickupStreet() {
+        Pickup pickup = PickupFactory.createPickupWithAttributes( "", "Woodstock", "Cape Town");
+        assertNotNull(pickup); //checks if pickupInfo is not null
         //validates to ensure all attributes have the expected values
-        assertEquals("PU123", pickupInfo.getPickupId());
-        assertEquals("Mackles Rd", pickupInfo.getPickupStreet());
-        assertEquals("Woodstock", pickupInfo.getPickupSuburb());
-        assertEquals("Cape Town", pickupInfo.getPickupCity());
+        assertEquals("",pickup.getPickupStreet() );
 
-        //prints out pickup object
-        System.out.println(pickupInfo.toString());
     }
 
     //tests pickup object wih an empty suburb input to ensure check handling of invalid input
     @Test
-    void createFailedPickup() {
-        Pickup pickupInfo = PickupFactory.createPickupWithAttributes("PU123", "Mackles Rd", "", "Cape Town");
-
+    void InvalidPickupSuburb() {
+        Pickup pickupInfo = PickupFactory.createPickupWithAttributes( "Mackles Rd", "", "Cape Town");
         assertNotNull(pickupInfo);
         assertEquals("", pickupInfo.getPickupSuburb());
+    }
+
+    @Test
+    void InvalidPickupCity() {
+        Pickup pickupInfo = PickupFactory.createPickupWithAttributes( "Mackles Rd", "Woodstock", "");
+        assertNotNull(pickupInfo);
+        assertEquals("", pickupInfo.getPickupCity());
     }
 
 }

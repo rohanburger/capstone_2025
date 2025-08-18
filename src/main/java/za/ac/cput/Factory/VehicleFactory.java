@@ -1,5 +1,6 @@
 package za.ac.cput.Factory;
 
+import za.ac.cput.Helper.Helper;
 import za.ac.cput.domain.Vehicle;
 /*
     VehicleFactory.java
@@ -9,10 +10,14 @@ import za.ac.cput.domain.Vehicle;
 */
 
 public class VehicleFactory {
-    public static Vehicle createVehicle(String vehicleId, String licenseNum) {
-        if (vehicleId == null || licenseNum == null) {
-            throw new IllegalArgumentException("Vehicle ID and License Number cannot be null");
+    public static Vehicle createVehicle(String licensePlateNum) {
+
+        if (Helper.isNullOrEmpty(licensePlateNum)){
+            System.out.println("Error: Vehicle license number is null or empty");
         }
-        return new Vehicle(vehicleId, licenseNum);
+
+        return new Vehicle.Builder()
+                .setLicensePlateNum(licensePlateNum)
+                .build();
     }
 }

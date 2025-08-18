@@ -1,7 +1,6 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /*
     Dropoff.java
@@ -10,24 +9,26 @@ import jakarta.persistence.Id;
     Date:08/05/2025
 */
 @Entity
+@Table(name="DropOff")
 public class Dropoff {
     @Id
-    private String dropoffId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long dropoffId;
     private String dropoffStreet;
     private String dropoffSuburb;
     private String dropoffCity;
 
-    public Dropoff() {}
+    protected Dropoff() {}
 
 
     private Dropoff(DropoffBuilder builder) {
-        this.dropoffId=builder.dropoffId;
+        this.dropoffId= builder.dropoffId;
         this.dropoffStreet = builder.dropoffStreet;
         this.dropoffSuburb = builder.dropoffSuburb;
         this.dropoffCity = builder.dropoffCity;
 
     }
-    public String getDropoffId() {return dropoffId;}
+    public Long getDropoffId() {return dropoffId;}
 
     public String getDropoffStreet() {
         return dropoffStreet;
@@ -52,7 +53,7 @@ public class Dropoff {
     }
 
     public static class DropoffBuilder{
-        private String dropoffId;
+        private Long dropoffId;
         private String dropoffStreet;
         private String dropoffSuburb;
         private String dropoffCity;
@@ -62,7 +63,7 @@ public class Dropoff {
             return this;
         }
 
-        public DropoffBuilder setDropoffId(String dropoffId){
+        public DropoffBuilder setDropoffId(Long dropoffId){
             this.dropoffId=dropoffId;
             return this;
         }
@@ -74,6 +75,14 @@ public class Dropoff {
 
         public DropoffBuilder setDropoffCity(String dropoffCity) {
             this.dropoffCity = dropoffCity;
+            return this;
+        }
+
+        public DropoffBuilder copy(Dropoff dropoff){
+            this.dropoffId=dropoff.dropoffId;
+            this.dropoffStreet=dropoff.dropoffStreet;
+            this.dropoffSuburb=dropoff.dropoffSuburb;
+            this.dropoffCity=dropoff.dropoffCity;
             return this;
         }
 

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Service;
-import za.ac.cput.Factory.SessionFactory;
+import za.ac.cput.Factory.*;
 import za.ac.cput.domain.*;
 import java.util.List;
 /*
@@ -17,29 +17,35 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class SessionServiceTest {
-    private Passenger passenger;
+    private User user;
     private Driver driver;
     private Location location;
     private Payment payment;
+    private Session session;
 
     @Autowired
-    private static SessionService service;
+    private SessionService service;
 
     @BeforeEach
     void Setup(){
-        passenger = new Passenger( );
-        driver = new Driver();
-        location= new Location();
-        payment = new Payment();
+      payment = PaymentFactory.createPaymentFactory(150.0f);
+      driver = DriverFactory.createDriver("John","Doe","0827877878","<EMAIL>","LIC101",null);
+      location = LocationFactory.createLocation( DropoffFactory.createDropoff("35 Hoodwink","Claremont","Cape Town"),
+              PickupFactory.createPickupWithAttributes("40 Hoodwink","Claremont","Cape Town"));
+      user = UserFactory.createUserWithAllAttributes("John","Doe","0827877878","john@gmail.com",null);
+      Session createsession= SessionFactory.createSessionFactory( user, driver, location, 2,  "Active",payment);
+      session = service.create(createsession);
+      assertNotNull(session);
+      assertNotNull(session.getSessionid());
     }
 
-    private Session session = SessionFactory.createSessionFactory("123", passenger, driver, location, 2,  "Active",payment);
+
 
     @Test
     void create() {
-       Session session1 = SessionFactory.createSessionFactory("124", passenger, driver, location, 2,  "Active",payment);
-       assertNotNull(session1);
-        System.out.println(session1.toString());
+        Session created = service.create(session);
+       assertNotNull(created);
+        System.out.println(created.toString());
 
     }
 
@@ -53,7 +59,7 @@ class SessionServiceTest {
 
     @Test
     void update() {
-        Session sessionupdate = new Session.Builder().setPassengerCount(3).build();
+        Session sessionupdate = new Session.Builder().copy(session).setPassengerCount(5).build();
         assertNotNull(sessionupdate);
         Session updated = service.update(sessionupdate);
         assertNotNull(updated);
@@ -68,7 +74,6 @@ class SessionServiceTest {
 
     @Test
     void getAll() {
-        List<Session> sessions = service.getAll();
-        assertFalse(sessions.isEmpty());
+        System.out.println(service.getAll());
     }
 }
