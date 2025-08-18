@@ -1,5 +1,10 @@
 package za.ac.cput.service;
-//
+/*
+    LocationService.java
+    Location Service Class
+    Author:Sharief Abdul
+    Date:08/05/2025
+*/
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
