@@ -24,7 +24,7 @@ public class BankDetails {
     private String bankCardNum;
     private String bankCardDate;
     private String bankCardCVV;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bankBranchId")
     private BankBranch bankBranch; // Added link to BankBranch
 

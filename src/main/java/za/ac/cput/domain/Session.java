@@ -17,18 +17,18 @@ public class Session {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long sessionid;//Initialize all neccesary attributes
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "passengerId")
     private User user;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "driverId")
     private Driver driver;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "locationId")
     private Location location;
     private int passengerCount;
     private String sessionStatus;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "paymentId")
     private Payment payment;
 

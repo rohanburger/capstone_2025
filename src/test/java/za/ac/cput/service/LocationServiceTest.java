@@ -12,34 +12,36 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Service;
+import za.ac.cput.Factory.DropoffFactory;
 import za.ac.cput.Factory.LocationFactory;
+import za.ac.cput.Factory.PickupFactory;
 import za.ac.cput.domain.Dropoff;
 import za.ac.cput.domain.Location;
 import za.ac.cput.domain.Pickup;
-import za.ac.cput.service.LocationServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@Service
-@TestMethodOrder(MethodOrderer.MethodName.class)
+@SpringBootTest
 public class LocationServiceTest {
 
     private Dropoff dropoff;
     private Pickup pickup;
+    @Autowired
+    private LocationService locationService;
+    private Location location;
 
     @BeforeEach
     public void setUp() {
-         dropoff = new Dropoff();
-         pickup = new Pickup();
+        dropoff =DropoffFactory.createDropoff("35 Hoodwink","Claremont","Cape Town");
+        pickup =PickupFactory.createPickupWithAttributes("40 Hoodwink","Claremont","Cape Town");
+
+        Location createlocation = LocationFactory.createLocation(dropoff, pickup);
+        location = locationService.create(createlocation);
+        assertNotNull(location);
+        assertNotNull(location.getLocationId());
     }
-
-    @Autowired
-    private LocationServiceImpl locationService;
-
-
-    private Location location = LocationFactory.createLocation("001",dropoff, pickup);
-
     @Test
     void create() {
         Location created = locationService.create(location);
@@ -63,7 +65,7 @@ public class LocationServiceTest {
 
     @Test
     void delete() {
-        boolean delete= locationService.delete("001");
+        boolean delete= locationService.delete(location.getLocationId());
         assertNotNull(delete);
         System.out.println(delete);
     }

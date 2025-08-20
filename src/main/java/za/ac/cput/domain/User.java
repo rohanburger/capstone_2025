@@ -20,7 +20,7 @@ public class User {
     private String userSurname;
     private String userPhoneNum;
     private String userEmail;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
     private Set<BankDetails> bankdetails; // linked to BankDetails class
 

@@ -21,7 +21,7 @@ public class Driver {
     private String driverPhoneNum;
     private String driverEmail;
     private String licenseNum;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "driver_Id")
     private Set<Vehicle> vehicles;
 

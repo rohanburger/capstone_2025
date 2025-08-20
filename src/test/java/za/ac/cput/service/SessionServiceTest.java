@@ -7,7 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Service;
 import za.ac.cput.Factory.*;
 import za.ac.cput.domain.*;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 /*
     SessionServiceTest.java
     Session Service Test
@@ -22,21 +25,28 @@ class SessionServiceTest {
     private Location location;
     private Payment payment;
     private Session session;
+    private Set<BankDetails> bankDetails;
+    private BankBranch bankBranch;
 
     @Autowired
     private SessionService service;
 
     @BeforeEach
     void Setup(){
+        bankDetails = new HashSet<>();
       payment = PaymentFactory.createPaymentFactory(150.0f);
       driver = DriverFactory.createDriver("John","Doe","0827877878","<EMAIL>","LIC101",null);
       location = LocationFactory.createLocation( DropoffFactory.createDropoff("35 Hoodwink","Claremont","Cape Town"),
               PickupFactory.createPickupWithAttributes("40 Hoodwink","Claremont","Cape Town"));
-      user = UserFactory.createUserWithAllAttributes("John","Doe","0827877878","john@gmail.com",null);
+      bankBranch =  BankBranchFactory.createBankBranch("Capitec", "CT543");
+      bankDetails.add(BankDetailsFactory.createBankDetails("1321416546", "08/29", "128", bankBranch));
+      assertNotNull(bankDetails);
+      user = UserFactory.createUserWithAllAttributes("John","Doe","0827877878","john@gmail.com", bankDetails);
       Session createsession= SessionFactory.createSessionFactory( user, driver, location, 2,  "Active",payment);
       session = service.create(createsession);
       assertNotNull(session);
       assertNotNull(session.getSessionid());
+
     }
 
 
@@ -45,7 +55,7 @@ class SessionServiceTest {
     void create() {
         Session created = service.create(session);
        assertNotNull(created);
-        System.out.println(created.toString());
+        System.out.println(created);
 
     }
 
@@ -53,7 +63,8 @@ class SessionServiceTest {
     void read() {
         Session sessionread = service.read(session.getSessionid());
         assertNotNull(sessionread);
-        System.out.println(sessionread.toString());
+        System.out.println(sessionread);
+
 
     }
 
@@ -63,7 +74,8 @@ class SessionServiceTest {
         assertNotNull(sessionupdate);
         Session updated = service.update(sessionupdate);
         assertNotNull(updated);
-        System.out.println(sessionupdate.toString());
+        System.out.println(updated);
+
     }
 
     @Test
