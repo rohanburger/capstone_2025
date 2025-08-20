@@ -20,6 +20,7 @@ public class User {
     private String userSurname;
     private String userPhoneNum;
     private String userEmail;
+    private String userPassword; //Password is to be implemented in the future
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
     private Set<BankDetails> bankdetails; // linked to BankDetails class
