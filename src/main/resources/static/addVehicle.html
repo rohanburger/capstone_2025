@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ff0db6d3d3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Home</title>
+    <title>Vehicle</title>
 </head>
 <body>
 <div class="NavigationFlexContainer">
@@ -18,17 +18,16 @@
         <a href="userProfile.html">Profile</a>
     </div>
 </div>
+<div class="VehicleFlexContainer">
+    <form>
+        <a href="login.html"><i class="fa-solid fa-angle-left" style="color: #4A4A4A"></i></a>
+        <h1>Vehicle</h1>
 
-    <div class="HomeFlexContainer">
-        <div style="flex-grow: 5">
-        <h1>Welcome to LekkaRide</h1>
-        <p>LekkaRide is a platform that allows you to book a ride with your friends and family.</p>
-        <p>We are here to make your ride a memorable experience.</p>
-        <a id="BookNowButton">BOOK NOW</a>
-        </div>
-        <div style="flex-grow: 5">
-            <img src="Img/taxi.png" alt="taxi">
-        </div>
-    </div>
+        <label for="LicensePlateNum">License Plate</label>
+        <input type="text" id="LicensePlateNum" placeholder="e.g.ABC123">
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
 </body>
 </html>

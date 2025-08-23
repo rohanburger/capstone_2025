@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ff0db6d3d3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Book A ride</title>
+</head>
+<body>
+<div class="NavigationFlexContainer">
+    <div class="logo"><img src="Img/lekkaRideLogo.png" alt="LekkaRide"></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="bookARide.html">Book a ride</a>
+        <a href="viewRideRequests.html">View booking request</a>
+        <a href="register.html">Login/Register</a>
+        <a href="userProfile.html">Profile</a>
+    </div>
+</div>
+
+<div class="bookARideFlexContainer">
+    <form>
+        <h1>Book A ride</h1>
+        <label for="passengerCount">Passenger Count</label>
+        <input type="number" id="passengerCount">
+
+        <input type="hidden" id="rideStatus" value="pending" >
+
+        <label for="pickUpStreet">Pick up Street</label>
+        <input type="text" id="pickUpStreet" placeholder="e.g. 123 Main St">
+
+        <label for="pickUpSuburb">Pick up Suburb</label>
+        <input type="text" id="pickUpSuburb" placeholder="e.g. District six">
+
+        <label for="pickUpCity">Pick up City</label>
+        <input type="text" id="pickUpCity" placeholder="e.g. Cape town">
+
+        <label for="dropOffStreet">Drop off Street</label>
+        <input type="text" id="dropOffStreet" placeholder="e.g. 123 Main St">
+
+        <label for="dropOffSuburb">Drop off  Suburb</label>
+        <input type="text" id="dropOffSuburb" placeholder="e.g. District six">
+
+        <label for="dropOffCity">Drop off  City</label>
+        <input type="text" id="dropOffCity" placeholder="e.g. Cape town">
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+
+</body>
+</html>

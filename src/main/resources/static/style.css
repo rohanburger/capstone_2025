@@ -1,0 +1,610 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: #F5F5F5;
+    font-family: 'Roboto', sans-serif;
+}
+/*Index*/
+body{
+    width: 100%;
+    height: 100vh;
+    background: url("../images/CT_Night.jpeg") no-repeat;
+    background-size: cover;
+    display: block;
+    overflow-x: hidden;
+}
+h1{
+    font-size: 30px;
+}
+
+h2{
+    font-size: 18px;
+}
+
+h3{
+    font-size: 16px;
+}
+/*Flex-Container Default*/
+.NavigationFlexContainer {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+}
+
+.logo img {
+    width: 200px;
+    height: 30px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #F5F5F5;
+    font-size: 18px;
+    padding: 5px 10px;
+    display: inline-block;
+}
+
+
+.nav-links a:hover {
+    color:#4A4A4A;
+}
+
+.HomeFlexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.HomeFlexContainer > div {
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+
+}
+
+.HomeFlexContainer h1{
+    text-decoration: none;
+    font-size: 30px;
+    color: #F5F5F5;
+    margin-top: 300px;
+}
+
+.HomeFlexContainer p {
+    font-size: 20px;
+}
+.HomeFlexContainer img{
+    margin-top: 200px;
+}
+
+#BookNowButton{
+    background-color:#4A4A4A ;
+    border: 2px solid #4A4A4A;
+    border-radius: 5px;
+    color: #F5F5F5;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#BookNowButton:hover {
+    background-color: #F5F5F5;
+    border: 2px solid #4A4A4A ;
+    color: #4A4A4A;
+}
+/*Bank Details*/
+.BankFlexContainer {
+    background-color: #F5F5F5;
+    width: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 6%;
+    margin-left: 35%;
+    margin-right: 35%;
+    color: #4A4A4A;
+}
+
+.BankFlexContainer input[type=text], select{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #4A4A4A;
+}
+
+.BankFlexContainer input::placeholder{
+    color: rgba(74, 74, 74, 0.42);
+}
+
+.BankFlexContainer label{
+    color: #4A4A4A;
+}
+.BankFlexContainer h1{
+    color: #4A4A4A;
+    text-align: center;
+}
+
+.BankFlexContainer input[type=submit]{
+    width: 100%;
+    background-color:#4A4A4A;
+    border: 2px solid #4A4A4A;
+    border-radius: 5px;
+    color: #F5F5F5;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.BankFlexContainer input[type=submit]:hover {
+    background-color: #F5F5F5;
+    border: 2px solid #4A4A4A ;
+    color: #4A4A4A;
+}
+
+/*Register*/
+.RegisterFlexContainer{
+    background-color: #F5F5F5;
+    width: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 6%;
+    margin-left: 35%;
+    margin-right: 35%;
+    color: #4A4A4A;
+}
+
+.RegisterFlexContainer input[type=text],input[type="email"],input[type="password"], select{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #4A4A4A;
+}
+
+.RegisterFlexContainer select option{
+    color: #4A4A4A;
+}
+
+.RegisterFlexContainer input::placeholder{
+    color: rgba(74, 74, 74, 0.42);
+}
+
+.RegisterFlexContainer label{
+    color: #4A4A4A;
+}
+.RegisterFlexContainer h1{
+    color: #4A4A4A;
+    text-align: center;
+}
+
+.RegisterFlexContainer input[type=submit]{
+    width: 100%;
+    background-color:#4A4A4A;
+    border: 2px solid #4A4A4A;
+    border-radius: 5px;
+    color: #F5F5F5;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.RegisterFlexContainer input[type=submit]:hover {
+    background-color: #F5F5F5;
+    border: 2px solid #4A4A4A ;
+    color: #4A4A4A;
+}
+.registerLinks {
+    text-align: center;
+    width: 100%;
+}
+.RegisterFlexContainer a{
+    color: #4A4A4A;
+    text-decoration: none;
+}
+.RegisterFlexContainer a:hover{
+    color: rgba(74, 74, 74, 0.7);
+}
+
+/*login*/
+.loginFlexContainer{
+    background-color: #F5F5F5;
+    width: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 6%;
+    margin-left: 35%;
+    margin-right: 35%;
+    color: #4A4A4A;
+}
+
+.loginFlexContainer input[type=text],input[type="email"],input[type="password"], select{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #4A4A4A;
+}
+
+.loginFlexContainer select option{
+    color: #4A4A4A;
+}
+
+.loginFlexContainer input::placeholder{
+    color: rgba(74, 74, 74, 0.42);
+}
+
+.loginFlexContainer label{
+    color: #4A4A4A;
+}
+.loginFlexContainer h1{
+    color: #4A4A4A;
+    text-align: center;
+}
+
+.loginFlexContainer input[type=submit]{
+    width: 100%;
+    background-color:#4A4A4A;
+    border: 2px solid #4A4A4A;
+    border-radius: 5px;
+    color: #F5F5F5;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.loginFlexContainer input[type=submit]:hover {
+    background-color: #F5F5F5;
+    border: 2px solid #4A4A4A ;
+    color: #4A4A4A;
+}
+.loginLinks {
+    text-align: center;
+    width: 100%;
+}
+.loginFlexContainer a{
+    color: #4A4A4A;
+    text-decoration: none;
+}
+.loginFlexContainer a:hover{
+    color: rgba(74, 74, 74, 0.7);
+}
+
+/*Vehicle*/
+.VehicleFlexContainer{
+    background-color: #F5F5F5;
+    width: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 6%;
+    margin-left: 35%;
+    margin-right: 35%;
+    color: #4A4A4A;
+}
+
+.VehicleFlexContainer input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #4A4A4A;
+}
+
+
+.VehicleFlexContainer input::placeholder{
+    color: rgba(74, 74, 74, 0.42);
+}
+
+.VehicleFlexContainer label{
+    color: #4A4A4A;
+}
+.VehicleFlexContainer h1{
+    color: #4A4A4A;
+    text-align: center;
+}
+
+.VehicleFlexContainer input[type=submit]{
+    width: 100%;
+    background-color:#4A4A4A;
+    border: 2px solid #4A4A4A;
+    border-radius: 5px;
+    color: #F5F5F5;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.VehicleFlexContainer input[type=submit]:hover {
+    background-color: #F5F5F5;
+    border: 2px solid #4A4A4A ;
+    color: #4A4A4A;
+}
+
+/*Book A ride*/
+
+
+.bookARideFlexContainer{
+    background-color: #F5F5F5;
+    width: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 6%;
+    margin-left: 35%;
+    margin-right: 35%;
+    color: #4A4A4A;
+}
+
+.bookARideFlexContainer input[type=text],input[type=number]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #4A4A4A;
+}
+
+
+.bookARideFlexContainer input::placeholder{
+    color: rgba(74, 74, 74, 0.42);
+}
+
+.bookARideFlexContainer label{
+    color: #4A4A4A;
+}
+.bookARideFlexContainer h1{
+    color: #4A4A4A;
+    text-align: center;
+}
+
+.bookARideFlexContainer input[type=submit]{
+    width: 100%;
+    background-color:#4A4A4A;
+    border: 2px solid #4A4A4A;
+    border-radius: 5px;
+    color: #F5F5F5;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.bookARideFlexContainer input[type=submit]:hover {
+    background-color: #F5F5F5;
+    border: 2px solid #4A4A4A ;
+    color: #4A4A4A;
+}
+/*View a Ride*/
+.viewARideFlexContainer{
+    width: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 6%;
+    margin-left: 35%;
+    margin-right: 35%;
+    color: #4A4A4A;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.viewARideFlexContainer>div{
+    background-color: #F5F5F5;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+
+.viewARideFlexContainer input[type=text],input[type=number]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #4A4A4A;
+}
+
+
+.viewARideFlexContainer input::placeholder{
+    color: rgba(74, 74, 74, 0.42);
+}
+
+.viewARideFlexContainer label{
+    color: #4A4A4A;
+}
+.viewARideFlexContainer h1{
+    color: #4A4A4A;
+    text-align: center;
+}
+
+.viewARideFlexContainer input[type=submit]{
+    width: 100%;
+    background-color:#4A4A4A;
+    border: 2px solid #4A4A4A;
+    border-radius: 5px;
+    color: #F5F5F5;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.viewARideFlexContainer input[type=submit]:hover {
+    background-color: #F5F5F5;
+    border: 2px solid #4A4A4A ;
+    color: #4A4A4A;
+}
+
+/*profile*/
+.ProfileFlexContainer{
+    background-color: #F5F5F5;
+    width: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top:6%;
+    margin-left: 35%;
+    margin-right: 35%;
+    color: #4A4A4A;
+}
+
+.ProfileFlexContainer input[type=text],input[type=number]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #4A4A4A;
+}
+
+
+.ProfileFlexContainer input::placeholder{
+    color: rgba(74, 74, 74, 0.42);
+}
+
+.ProfileFlexContainer label{
+    color: #4A4A4A;
+}
+.ProfileFlexContainer h1{
+    color: #4A4A4A;
+    text-align: center;
+}
+
+.ProfileFlexContainer input[type=submit]{
+    width: 100%;
+    background-color:#4A4A4A;
+    border: 2px solid #4A4A4A;
+    border-radius: 5px;
+    color: #F5F5F5;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.ProfileFlexContainer input[type=submit]:hover {
+    background-color: #F5F5F5;
+    border: 2px solid #4A4A4A ;
+    color: #4A4A4A;
+}
+
+#profileBody{
+    width: 100%;
+    height: 140vh;
+    background: url("../images/CT_Night.jpeg") no-repeat;
+    background-size: cover;
+    display: block;
+    overflow-x: hidden;
+}
+
+#driverprofileBody{
+    width: 100%;
+    height: 110vh;
+    background: url("../images/CT_Night.jpeg") no-repeat;
+    background-size: cover;
+}
+
+/*user history*/
+.userHistoryFlexContainer{
+    width: 20%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 6%;
+    margin-left: 40%;
+    margin-right: 40%;
+    color: #4A4A4A;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.userHistoryFlexContainer>div{
+    background-color: #F5F5F5;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    color: #4A4A4A;
+}
+
+.userHistoryFlexContainer label{
+    color: #4A4A4A;
+}
+/*driver history*/
+
+.driverHistoryFlexContainer{
+    width: 20%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 6%;
+    margin-left: 40%;
+    margin-right: 40%;
+    color: #4A4A4A;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.driverHistoryFlexContainer>div{
+    background-color: #F5F5F5;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    color: #4A4A4A;
+}
+
+.driverHistoryFlexContainer label{
+    color: #4A4A4A;
+}
+
+

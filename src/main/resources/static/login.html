@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+</head>
+<body>
+<div class="NavigationFlexContainer">
+    <div class="logo"><img src="Img/lekkaRideLogo.png" alt="LekkaRide"></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="bookARide.html">Book a ride</a>
+        <a href="viewRideRequests.html">View booking request</a>
+        <a href="register.html">Login/Register</a>
+        <a href="userProfile.html">Profile</a>
+    </div>
+</div>
+<div class="loginFlexContainer">
+    <form>
+        <h1>Login</h1>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="e.g.example@gmail.com" >
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="e.g.password">
+
+        <label for="Type">Select Account Type</label>
+        <select  id="Type">
+            <option value="User">User</option>
+            <option value="Driver">Driver</option>
+        </select>
+
+        <div class="loginLinks">
+            <a href="index.html">Continue browsing as a guest</a><br>
+            <a href="register.html">Register a account</a>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+</html>

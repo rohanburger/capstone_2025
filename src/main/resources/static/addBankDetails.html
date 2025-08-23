@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ff0db6d3d3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Bank Details</title>
+</head>
+<body>
+<div class="NavigationFlexContainer">
+    <div class="logo"><img src="Img/lekkaRideLogo.png" alt="LekkaRide"></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="bookARide.html">Book a ride</a>
+        <a href="viewRideRequests.html">View booking request</a>
+        <a href="register.html">Login/Register</a>
+        <a href="userProfile.html">Profile</a>
+    </div>
+</div>
+<div class="BankFlexContainer">
+    <form>
+        <a href="login.html"><i class="fa-solid fa-angle-left" style="color: #4A4A4A"></i></a>
+        <h1>Bank Details</h1>
+        <label for="bankCardNumber">Card Number</label>
+        <input type="text" id="bankCardNumber" placeholder="e.g.1234 5678 9012 3456">
+
+        <label for="bankCardDate">Card Experation Date</label>
+        <input type="text" id="bankCardDate" placeholder="e.g.MM/YY">
+
+        <label for="bankCvv">CVV</label>
+        <input type="text" id="bankCvv" placeholder="e.g.123">
+
+        <label for="bankBranch">Bank Branch</label>
+        <select  id="bankBranch"></select>
+
+        <label for="bankBranchCode">Bank Branch Code</label>
+        <select  id="bankBranchCode" ></select>
+
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+</body>
+</html>
