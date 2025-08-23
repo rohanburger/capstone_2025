@@ -8,7 +8,7 @@
 body{
     width: 100%;
     height: 100vh;
-    background: url("../images/CT_Night.jpeg") no-repeat;
+    background:url("/LekkaRide/images/CT_Night.jpeg") no-repeat;
     background-size: cover;
     display: block;
     overflow-x: hidden;
@@ -540,7 +540,7 @@ h3{
 #profileBody{
     width: 100%;
     height: 140vh;
-    background: url("../images/CT_Night.jpeg") no-repeat;
+    background: url("/LekkaRide/images/CT_Night.jpeg")  no-repeat;
     background-size: cover;
     display: block;
     overflow-x: hidden;
@@ -549,7 +549,7 @@ h3{
 #driverprofileBody{
     width: 100%;
     height: 110vh;
-    background: url("../images/CT_Night.jpeg") no-repeat;
+    background: url("/LekkaRide/images/CT_Night.jpeg")  no-repeat;
     background-size: cover;
 }
 
@@ -606,5 +606,3 @@ h3{
 .driverHistoryFlexContainer label{
     color: #4A4A4A;
 }
-
-

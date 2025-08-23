@@ -1,7 +1,6 @@
-package za.ac.cput.controller;
+package za.ac.cput.controller.DomainControllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.BankBranch;
 import za.ac.cput.service.BankBranchService;

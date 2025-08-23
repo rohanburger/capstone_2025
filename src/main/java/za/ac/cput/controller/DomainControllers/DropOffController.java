@@ -1,7 +1,6 @@
-package za.ac.cput.controller;
+package za.ac.cput.controller.DomainControllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Dropoff;
 import za.ac.cput.service.DropoffService;
