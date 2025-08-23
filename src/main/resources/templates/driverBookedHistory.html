@@ -11,11 +11,11 @@
 <div class="NavigationFlexContainer">
     <div class="logo"><img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide"></div>
     <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="bookARide.html">Book a ride</a>
-        <a href="viewRideRequests.html">View booking request</a>
-        <a href="register.html">Login/Register</a>
-        <a href="userProfile.html">Profile</a>
+        <a th:href="@{/}" >Home</a>
+        <a th:if="${session.role == 'passenger'}" th:href="@{/bookARide}">Book a ride</a>
+        <a th:if="${session.role == 'driver'}" th:href="@{/viewRideRequests}">View booking request</a>
+        <a th:if="${session.user != null}" th:href="@{/userProfile}">Profile</a>
+        <a th:if="${session.user == null}" th:href="@{/userRegister}">Login/Register</a>
     </div>
 </div>
 <div class="driverHistoryFlexContainer">

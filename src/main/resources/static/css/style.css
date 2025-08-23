@@ -17,8 +17,10 @@ h1{
     font-size: 30px;
 }
 
-h2{
+.RegisterFlexContainer h2{
     font-size: 18px;
+    color:#4A4A4A;
+    text-align: center;
 }
 
 h3{
@@ -225,6 +227,13 @@ h3{
 }
 .RegisterFlexContainer a:hover{
     color: rgba(74, 74, 74, 0.7);
+}
+
+#registerBody{
+    width: 100%;
+    height: 150vh;
+    background: url("/LekkaRide/images/CT_Night.jpeg")  no-repeat;
+    background-size: cover;
 }
 
 /*login*/

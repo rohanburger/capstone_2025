@@ -19,6 +19,7 @@ public class UserFactory {
                                                         String userSurname,
                                                         String userPhoneNum,
                                                         String userEmail,
+                                                        String userPassword,
                                                         Set<BankDetails> bankdetails) {
 
         if (Helper.isNullOrEmpty(userName) ||
@@ -38,6 +39,7 @@ public class UserFactory {
                 .setUserSurname(userSurname)
                 .setUserPhoneNum(userPhoneNum)
                 .setUserEmail(userEmail)
+                .setUserPassword(userPassword)
                 .setBankdetails(bankdetails)
                 .build();
 

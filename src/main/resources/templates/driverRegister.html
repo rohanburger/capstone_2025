@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>Driver Register</title>
+</head>
+<body id="registerBody">
+<div class="NavigationFlexContainer">
+    <div class="logo"><img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide"></div>
+    <div class="nav-links">
+        <a th:href="@{/}" >Home</a>
+        <a th:if="${session.role == 'passenger'}"th:href="@{/bookARide}">Book a ride</a>
+        <a th:if="${session.role == 'driver'}" th:href="@{/viewRideRequests}">View booking request</a>
+        <a th:if="${session.user != null}" th:href="@{/userProfile}">Profile</a>
+        <a th:if="${session.user == null}" th:href="@{/userRegister}">Login/Register</a>
+    </div>
+</div>
+<div class="RegisterFlexContainer">
+    <form th:action="@{/driverRegister/create}" method="post">
+        <h1>Driver Register</h1>
+        <label for="Name">Name</label>
+        <input type="text" id="Name" name="name" placeholder="e.g.John">
+
+        <label for="surname">Surname</label>
+        <input type="text" id="surname" name="surname" placeholder="e.g.Doe">
+
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="e.g.0123456789">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="e.g.example@gmail.com" >
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="e.g.password">
+
+        <div class="vehicle">
+            <h2>Vehicle license Number</h2>>
+            <label for="licenseNum">License Plate</label>
+            <input type="text" id="licenseNum" name="licenseNum" placeholder="e.g.1234567890123456">
+        </div>
+
+        <div class="registerLinks">
+            <a th:href="@{/}">Continue browsing as a guest</a><br>
+            <a th:href="@{/driverLogin}">Already have an account</a><br>
+            <a th:href="@{/userRegister}">Create a User account</a>
+        </div>
+
+        <input type="submit" value="Register">
+    </form>
+</div>
+
+</body>
+</html>

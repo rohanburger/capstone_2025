@@ -11,57 +11,57 @@ public class navigationController {
         return "index";
     }
 
-    @GetMapping("/index.html")
+    @GetMapping("/index")
     public String index() {
         return "index";
     }
 
-    @GetMapping("/bookARide.html")
+    @GetMapping("/bookARide")
     public String login() {
         return "bookARide";
     }
 
-    @GetMapping("/viewRideRequests.html")
+    @GetMapping("/viewRideRequests")
     public String viewRideRequests() {
         return "viewRideRequests";
     }
 
-    @GetMapping("/register.html")
-    public String register() {
-        return "register";
-    }
-
-    @GetMapping("/userProfile.html")
+    @GetMapping("/userProfile")
     public String userProfile() {
         return "userProfile";
     }
 
-    @GetMapping("/login.html")
+    @GetMapping("/userLogin")
     public String loginPage() {
-        return "login";
+        return "userLogin";
     }
 
-    @GetMapping("/addVehicle.html")
+    @GetMapping("/driverLogin")
+    public String driverLoginPage() {
+        return "driverLogin";
+    }
+
+    @GetMapping("/addVehicle")
     public String addVehicle() {
         return "addVehicle";
     }
 
-    @GetMapping("/addBankDetails.html")
+    @GetMapping("/addBankDetails")
     public String addBankDetails() {
         return "addBankDetails";
     }
 
-    @GetMapping("/userBookingHistory.html")
+    @GetMapping("/userBookingHistory")
     public String userBookingHistoryPage() {
         return "userBookingHistory";
     }
 
-    @GetMapping("/driverProfile.html")
+    @GetMapping("/driverProfile")
     public String driverProfilePage() {
         return "driverProfile";
     }
 
-    @GetMapping("/driverBookedHistory.html")
+    @GetMapping("/driverBookedHistory")
     public String driverBookedHistoryPage() {
         return "driverBookedHistory";
     }

@@ -27,7 +27,7 @@ class DriverServiceTest {
     void setUp() {
         vehicles = new HashSet<>();
         vehicles.add(VehicleFactory.createVehicle("939939393"));
-        Driver createDriver = DriverFactory.createDriver("John","Doe","0827877878","<EMAIL>","LIC101",vehicles);
+        Driver createDriver = DriverFactory.createDriver("John","Doe","0827877878","<EMAIL>","1234","LIC101",vehicles);
         driver = service.create(createDriver);
         assertNotNull(driver);
         assertNotNull(driver.getDriverId());

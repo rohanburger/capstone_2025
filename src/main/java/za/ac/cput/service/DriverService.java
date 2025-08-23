@@ -2,6 +2,7 @@ package za.ac.cput.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import za.ac.cput.domain.User;
 import za.ac.cput.repository.DriverRepository;
 import za.ac.cput.service.Interfaces.IDriverService;
 
@@ -36,6 +37,10 @@ public class DriverService implements IDriverService {
     public boolean delete(Long aLong) {
         repository.deleteById(aLong);
         return true;
+    }
+
+    public Driver findByDriverEmailAndDriverPassword(String email, String password) {
+        return repository.findByDriverEmailAndDriverPassword(email, password).orElse(null);
     }
 
     @Override

@@ -34,7 +34,7 @@ class UserFactoryTest {//holds bank details for passenger object
         @Test
         void InvalidUserName() {
             User user = UserFactory.createUserWithAllAttributes( "", "Newman",
-                    "0629348182", "john.doe@gmail.com",bankdetails);
+                    "0629348182", "john.doe@gmail.com","12414",bankdetails);
             assertNotNull(user);
             assertEquals("", user.getUserName());
         }
@@ -42,7 +42,7 @@ class UserFactoryTest {//holds bank details for passenger object
         @Test
         void InvalidSurname() {
             User user = UserFactory.createUserWithAllAttributes( "Ruben", "",
-                    "0629348182", "john.doe@gmail.com",bankdetails);
+                    "0629348182", "john.doe@gmail.com","12414",bankdetails);
             assertNotNull(user);
             assertEquals("", user.getUserSurname()); //checks if passName is assigned
 
@@ -52,7 +52,7 @@ class UserFactoryTest {//holds bank details for passenger object
         @Test
         void InvalidEmail() {
             User user = UserFactory.createUserWithAllAttributes("Ryan", "Posnik",
-                    "0823392824", "rposnikgmail.com", bankdetails);
+                    "0823392824", "rposnikgmail.com","12414", bankdetails);
             assertNotNull(user);
             //checks if email is correct
             assertEquals("rposnikgmail.com", user.getUserEmail());
@@ -61,7 +61,7 @@ class UserFactoryTest {//holds bank details for passenger object
         @Test
         void InvalidPhoneNumber() {
             User user = UserFactory.createUserWithAllAttributes("Ryan", "Posnik",
-                    "", "john.doe@gmail.com", bankdetails);
+                    "", "john.doe@gmail.com","12414", bankdetails);
         }
 
     }

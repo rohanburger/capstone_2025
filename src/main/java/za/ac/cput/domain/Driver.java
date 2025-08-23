@@ -19,7 +19,10 @@ public class Driver {
     private String driverName;
     private String driverSurname;
     private String driverPhoneNum;
+    @Column(unique = true)
     private String driverEmail;
+    private String driverPassword;
+    @Column(unique = true)
     private String licenseNum;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "driver_Id")
@@ -35,6 +38,7 @@ public class Driver {
         this.driverPhoneNum = builder.driverPhoneNum;
         this.driverEmail = builder.driverEmail;
         this.licenseNum = builder.licenseNum;
+        this.driverPassword = builder.driverPassword;
         this.vehicles = builder.vehicles;
     }
 
@@ -62,6 +66,9 @@ public class Driver {
         return licenseNum;
     }
 
+    public String getDriverPassword() {
+        return driverPassword;
+    }
     public Set<Vehicle> getVehicle() {
         return vehicles;
     }
@@ -69,13 +76,14 @@ public class Driver {
     @Override
     public String toString() {
         return "Driver{" +
-                "driverId='" + driverId + '\'' +
+                "driverId=" + driverId +
                 ", driverName='" + driverName + '\'' +
                 ", driverSurname='" + driverSurname + '\'' +
                 ", driverPhoneNum='" + driverPhoneNum + '\'' +
                 ", driverEmail='" + driverEmail + '\'' +
+                ", driverPassword='" + driverPassword + '\'' +
                 ", licenseNum='" + licenseNum + '\'' +
-                ", vehicle=" + vehicles +
+                ", vehicles=" + vehicles +
                 '}';
     }
 
@@ -86,6 +94,7 @@ public class Driver {
         private String driverPhoneNum;
         private String driverEmail;
         private String licenseNum;
+        private String driverPassword;
         private Set<Vehicle> vehicles;
 
         public Builder setDriverId(Long driverId) {
@@ -118,6 +127,11 @@ public class Driver {
             return this;
         }
 
+        public Builder setDriverPassword(String driverPassword) {
+            this.driverPassword = driverPassword;
+            return this;
+        }
+
         public Builder setVehicle(Set<Vehicle> vehicle) {
             this.vehicles = vehicle;
             return this;
@@ -130,6 +144,7 @@ public class Driver {
             this.driverPhoneNum = driver.driverPhoneNum;
             this.driverEmail = driver.driverEmail;
             this.licenseNum = driver.licenseNum;
+            this.driverPassword = driver.driverPassword;
             this.vehicles = driver.vehicles;
             return this;
         }

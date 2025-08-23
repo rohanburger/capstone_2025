@@ -24,8 +24,8 @@ class SessionFactoryTest {
 
     @BeforeEach
     void setUp(){
-        driver = DriverFactory.createDriver("Jeff", "Bowers", "0812708822", "jeffbowers60@gmail.com", "LIC101", null);
-        user = UserFactory.createUserWithAllAttributes("John","Doe","0827877878","john@gmail.com",null);
+        driver = DriverFactory.createDriver("Jeff", "Bowers", "0812708822", "jeffbowers60@gmail.com","1234", "LIC101", null);
+        user = UserFactory.createUserWithAllAttributes("John","Doe","0827877878","john@gmail.com","1234",null);
         location =LocationFactory.createLocation( DropoffFactory.createDropoff("35 Hoodwink","Claremont","Cape Town"),
                 PickupFactory.createPickupWithAttributes("40 Hoodwink","Claremont","Cape Town"));
         payment = PaymentFactory.createPaymentFactory(150.0f);

@@ -19,6 +19,7 @@ public class User {
     private String userName;
     private String userSurname;
     private String userPhoneNum;
+    @Column(unique = true)
     private String userEmail;
     private String userPassword; //Password is to be implemented in the future
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
@@ -36,6 +37,7 @@ public class User {
         this.userSurname = builder.userSurname;
         this.userPhoneNum = builder.userPhoneNum;
         this.userEmail = builder.userEmail;
+        this.userPassword=builder.userPassword;
         this.bankdetails = builder.bankdetails;
     }
 
@@ -60,19 +62,25 @@ public class User {
         return userEmail;
     }
 
+    public String getUserPassword() {
+        return userPassword;
+    }
+
     public Set<BankDetails> getBankdetails() {
         return bankdetails;
     }
 
     //displays string representation of object and overrides
+
     @Override
     public String toString() {
-        return "Passenger{" +
-                "Userid='" + userId + '\'' +
-                ", UserName='" + userName + '\'' +
-                ", UserSurname='" + userSurname + '\'' +
-                ", UserPhoneNum='" + userPhoneNum + '\'' +
-                ", UserEmail='" + userEmail +
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userSurname='" + userSurname + '\'' +
+                ", userPhoneNum='" + userPhoneNum + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userPassword='" + userPassword + '\'' +
                 ", bankdetails=" + bankdetails +
                 '}';
     }
@@ -84,6 +92,7 @@ public class User {
         private String userSurname;
         private String userPhoneNum;
         private String userEmail;
+        private String userPassword;
         private Set<BankDetails> bankdetails;
 
         //return builder objects
@@ -112,6 +121,11 @@ public class User {
             return this;
         }
 
+        public UserBuilder setUserPassword(String userPassword) {
+            this.userPassword = userPassword;
+            return this;
+        }
+
         public UserBuilder setBankdetails(Set<BankDetails> bankdetails) {
             this.bankdetails = bankdetails;
             return this;
@@ -124,6 +138,7 @@ public class User {
             this.userSurname = user.userSurname;
             this.userPhoneNum = user.userPhoneNum;
             this.userEmail = user.userEmail;
+            this.userPassword = user.userPassword;
             this.bankdetails = user.bankdetails;
             return this;
         }

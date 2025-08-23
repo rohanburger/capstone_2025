@@ -30,7 +30,7 @@ class DriverFactoryTest {
     @Test
     public void InvalidDriverName() {
         Driver driver = DriverFactory.createDriver("", "Bowers", "0812708822", "kylebowers60@gmail.com",
-                "LIC101",vehicle);
+                "LIC101","12414",vehicle);
         assertNotNull(driver);
         assertEquals("", driver.getDriverName());
     }
@@ -38,7 +38,7 @@ class DriverFactoryTest {
     @Test
     public void InvalidDriverSurname(){
         Driver driver = DriverFactory.createDriver("Kyle", "", "0812708822", "kylebowers60@gmail.com",
-                "LIC101",vehicle);
+                "LIC101","12414",vehicle);
         assertNotNull(driver);
         assertEquals("", driver.getDriverSurname());
     }
@@ -46,7 +46,7 @@ class DriverFactoryTest {
     @Test
     public void InvalidDriverPhoneNumber(){
         Driver driver = DriverFactory.createDriver("Kyle", "Bowers", "", "kylebowers60@gmail.com",
-                "LIC101",vehicle);
+                "LIC101","12414",vehicle);
         assertNotNull(driver);
         assertEquals("", driver.getDriverPhoneNum());
     }
@@ -54,7 +54,7 @@ class DriverFactoryTest {
     @Test
     public void InvalidDriverEmail(){
         Driver driver = DriverFactory.createDriver("Kyle", "Bowers", "0812708822", "",
-                "LIC101",vehicle);
+                "LIC101","12414",vehicle);
         assertNotNull(driver);
         assertEquals("", driver.getDriverEmail());
     }
@@ -62,7 +62,7 @@ class DriverFactoryTest {
     @Test
     public void InvalidLicenceNum(){
         Driver driver = DriverFactory.createDriver("Kyle", "Bowers", "0812708822", "kylebowers60@gmail.com",
-                "",vehicle);
+                "","12414",vehicle);
         assertNotNull(driver);
         assertEquals("", driver.getLicenseNum());
     }
