@@ -4,9 +4,10 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import za.ac.cput.Factory.BankDetailsFactory;
+import za.ac.cput.domain.BankBranch;
+import za.ac.cput.domain.BankDetails;
 import za.ac.cput.domain.User;
 import za.ac.cput.service.BankBranchService;
 import za.ac.cput.service.BankDetailsService;
@@ -42,6 +43,48 @@ public class userProfileController {
         return "userProfile";
 
     }
+    @PostMapping("/update")
+    public String updateProfile(
+            @RequestParam("userId") Long userId,
+            @RequestParam("name") String userName,
+            @RequestParam("surname") String userSurname,
+            @RequestParam("phoneNumber") String userPhoneNum,
+            @RequestParam("email") String email,
+            @RequestParam("password") String password,
+            @RequestParam("cardNumber") String cardNumber,
+            @RequestParam("cardExpiry") String cardExpiry,
+            @RequestParam("cardCvv") String cardCvv,
+            @RequestParam("branchId") Long branchId,
+            HttpSession session) {
+
+
+        User oldUser = userService.read(userId);
+        if (oldUser == null) return "redirect:/userProfile?error=UserNotFound";
+
+        BankDetails oldBank = oldUser.getBankdetails();
+        BankDetails newBank = new BankDetails.Builder()
+                .copy(oldBank)
+                .setBankCardNum(cardNumber)
+                .setBankCardDate(cardExpiry)
+                .setBankCardCVV(cardCvv)
+                .setBankBranch(bankBranchService.read(branchId))
+                .build();
+
+        User updatedUser = new User.UserBuilder().copy(oldUser)
+                .setUserName(userName)
+                .setUserSurname(userSurname)
+                .setUserPhoneNum(userPhoneNum)
+                .setUserEmail(email)
+                .setUserPassword(password)
+                .setBankdetails(newBank)
+                .build();
+
+        userService.update(updatedUser);
+        session.setAttribute("user", updatedUser);
+
+        return "redirect:/userProfile";
+    }
+
     @PostMapping("/delete")
     public String deleteUserProfile(HttpSession session) {
         User user = (User) session.getAttribute("user");
@@ -52,9 +95,11 @@ public class userProfileController {
         return "redirect:/"; // Redirect to homepage after deletion
     }
 
+
+
     @PostMapping("/logout")
     public String logout(HttpSession session) {
-        session.invalidate(); // Ends the user session
-        return "redirect:/";   // Redirect to homepage or login page
+        session.invalidate();
+        return "redirect:/";
     }
 }
