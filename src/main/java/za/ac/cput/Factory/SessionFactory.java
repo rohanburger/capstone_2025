@@ -12,14 +12,14 @@ import za.ac.cput.domain.*;
 public class SessionFactory {
     public static Session createSessionFactory(User user, Driver driver, Location location, int passengerCount, String sessionStatus, Payment payment){
         if (Helper.isZero(passengerCount)){//call the methods , check if value is equal to zero
-            System.out.println( "Error:Passenger Count is Zero");//Output message if the if is true
+            throw new IllegalArgumentException("Error:Passenger Count is Zero");//Output message if the if is true
         }
 
         if (Helper.isNullOrEmpty(sessionStatus)) {//calls the String null or empty methods and assigned sessionStatus to the paremete of the methods
-            System.out.println("Error:Session Status is null or empty");//Output message if the if is true
+            throw new IllegalArgumentException("Error:Session Status is null or empty");//Output message if the if is true
         }else {
             if (Helper.notValidStatus(sessionStatus)) {//Check if the status is a valid status
-                System.out.println("Error:Session Status is not valid");//Output message if the if is true
+                throw new IllegalArgumentException("Error:Session Status is not valid");//Output message if the if is true
             }
         }
 

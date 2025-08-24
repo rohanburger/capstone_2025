@@ -15,7 +15,7 @@ public class DropoffFactory {
     public static Dropoff createDropoff(String dropoffStreet, String dropoffSuburb, String dropoffCity) {
 
         if(Helper.isNullOrEmpty(dropoffStreet)||Helper.isNullOrEmpty(dropoffSuburb)||Helper.isNullOrEmpty(dropoffCity)){
-            System.out.println("Error:Drop off details are null or empty. ");
+            throw new IllegalArgumentException("Error:Drop off details are null or empty. ");
         }
 
         return new Dropoff.DropoffBuilder()

@@ -44,4 +44,8 @@ public class BankDetailsService implements IBankDetailsService {
     public List<BankDetails> getAll() {
         return this.repository.findAll();
     }
+
+    public boolean existsByCardNumber(String cardNumber) {
+        return repository.existsBybankCardNum(cardNumber);
+    }
 }

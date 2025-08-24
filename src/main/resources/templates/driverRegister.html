@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <title>Driver Register</title>
 </head>
-<body id="registerBody">
+<body id="driverRegisterBody" th:data-error="${error}">
 <div class="NavigationFlexContainer">
     <div class="logo"><img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide"></div>
     <div class="nav-links">
@@ -35,10 +35,13 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="e.g.password">
 
+        <label for="licenseNum">License Number</label>
+        <input type="text" id="licenseNum" name="licenseNum" placeholder="e.g.1234567890123456">
+
         <div class="vehicle">
             <h2>Vehicle license Number</h2>>
-            <label for="licenseNum">License Plate</label>
-            <input type="text" id="licenseNum" name="licenseNum" placeholder="e.g.1234567890123456">
+            <label for="licensePlateNum">License Plate</label>
+            <input type="text" id="licensePlateNum" name="licensePlateNum" placeholder="e.g.1234567890123456">
         </div>
 
         <div class="registerLinks">
@@ -50,6 +53,11 @@
         <input type="submit" value="Register">
     </form>
 </div>
-
+<script>
+    const error = document.getElementById('driverRegisterBody').dataset.error;
+    if(error) {
+        alert(error);
+    }
+</script>
 </body>
 </html>

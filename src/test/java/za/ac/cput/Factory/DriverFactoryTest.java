@@ -19,12 +19,11 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DriverFactoryTest {
-    private  Set<Vehicle> vehicle;
+    private  Vehicle vehicle;
 
     @BeforeEach
     public void setUp() {
-        vehicle  = new HashSet<>();
-        vehicle.add(VehicleFactory.createVehicle("CW456890"));
+        vehicle =VehicleFactory.createVehicle("CW456890");
     }
 
     @Test

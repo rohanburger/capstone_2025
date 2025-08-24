@@ -37,13 +37,21 @@ public class UserService implements IUserService {
         return true;
     }
 
+    @Override
+    public List<User> getAll() {
+        return repository.findAll(); //retrieves a list of Passenger
+    }
+
 
     public User findByEmailAndPassword(String email, String password) {
         return repository.findByUserEmailAndUserPassword(email, password).orElse(null);
     }
 
-    @Override
-    public List<User> getAll() {
-        return repository.findAll(); //retrieves a list of Passenger
+
+    public boolean existsByEmail(String email) {
+        return repository.existsByUserEmail(email);
     }
+
+
+
 }

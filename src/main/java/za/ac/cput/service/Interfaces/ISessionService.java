@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ISessionService extends IService<Session, Long> {
     List<Session> getAll();
+
 }

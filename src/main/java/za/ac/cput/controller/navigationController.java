@@ -26,11 +26,6 @@ public class navigationController {
         return "viewRideRequests";
     }
 
-    @GetMapping("/userProfile")
-    public String userProfile() {
-        return "userProfile";
-    }
-
     @GetMapping("/userLogin")
     public String loginPage() {
         return "userLogin";

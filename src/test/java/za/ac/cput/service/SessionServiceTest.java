@@ -25,7 +25,7 @@ class SessionServiceTest {
     private Location location;
     private Payment payment;
     private Session session;
-    private Set<BankDetails> bankDetails;
+    private BankDetails bankDetails;
     private BankBranch bankBranch;
 
     @Autowired
@@ -33,13 +33,12 @@ class SessionServiceTest {
 
     @BeforeEach
     void Setup(){
-        bankDetails = new HashSet<>();
       payment = PaymentFactory.createPaymentFactory(150.0f);
       driver = DriverFactory.createDriver("John","Doe","0827877878","<EMAIL>","LIC101","1234",null);
       location = LocationFactory.createLocation( DropoffFactory.createDropoff("35 Hoodwink","Claremont","Cape Town"),
               PickupFactory.createPickupWithAttributes("40 Hoodwink","Claremont","Cape Town"));
       bankBranch =  BankBranchFactory.createBankBranch("Capitec", "CT543");
-      bankDetails.add(BankDetailsFactory.createBankDetails("1321416546", "08/29", "128", bankBranch));
+      bankDetails=BankDetailsFactory.createBankDetails("1321416546", "08/29", "128", bankBranch);
       assertNotNull(bankDetails);
       user = UserFactory.createUserWithAllAttributes("John","Doe","0827877878","john@gmail.com","1234", bankDetails);
       Session createsession= SessionFactory.createSessionFactory( user, driver, location, 2,  "Active",payment);

@@ -20,17 +20,17 @@ public class UserFactory {
                                                         String userPhoneNum,
                                                         String userEmail,
                                                         String userPassword,
-                                                        Set<BankDetails> bankdetails) {
+                                                        BankDetails bankdetails) {
 
         if (Helper.isNullOrEmpty(userName) ||
                 Helper.isNullOrEmpty(userSurname) || Helper.isNullOrEmpty(userPhoneNum) ||
-                Helper.isNullOrEmpty(userEmail)) {
-                System.out.println("Error: Passenger field(s) are empty.");
+                Helper.isNullOrEmpty(userEmail)|| Helper.isNullOrEmpty(userPassword)) {
+            throw new IllegalArgumentException("Error: All user fields are required.");
 
         }
 
         if (!Helper.isValidEmail(userEmail)) {
-            System.out.println("Error: Invalid email.");
+            throw new IllegalArgumentException("Error: Invalid email.");
         }
 
 

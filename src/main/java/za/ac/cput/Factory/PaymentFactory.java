@@ -13,7 +13,7 @@ public class PaymentFactory {
     public static Payment createPaymentFactory( Float paymentamount){
 
         if(Helper.isZero(paymentamount)){//Call helper method to ensure the the float value isnt null
-            System.out.println("Error:Payment Amount is Zero");//Error message if true
+            throw new IllegalArgumentException("Error:Payment Amount is Zero");//Error message if true
         }
 
         return new Payment.Builder()

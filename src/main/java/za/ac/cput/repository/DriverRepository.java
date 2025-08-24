@@ -11,4 +11,5 @@ import java.util.Optional;
 @Repository
 public interface DriverRepository extends JpaRepository<Driver, Long> {
     Optional<Driver> findByDriverEmailAndDriverPassword(String email, String password);
+    public boolean existsByDriverEmail(String email);
 }

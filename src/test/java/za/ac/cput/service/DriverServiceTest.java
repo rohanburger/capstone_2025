@@ -21,12 +21,11 @@ class DriverServiceTest {
     @Autowired
     private DriverService service;
     private Driver driver;
-    private Set<Vehicle> vehicles;
+    private Vehicle vehicles;
 
     @BeforeEach
     void setUp() {
-        vehicles = new HashSet<>();
-        vehicles.add(VehicleFactory.createVehicle("939939393"));
+        vehicles=VehicleFactory.createVehicle("939939393");
         Driver createDriver = DriverFactory.createDriver("John","Doe","0827877878","<EMAIL>","1234","LIC101",vehicles);
         driver = service.create(createDriver);
         assertNotNull(driver);

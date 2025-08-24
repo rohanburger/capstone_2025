@@ -21,14 +21,13 @@ class UserFactoryTest {//holds bank details for passenger object
 
         private User users;
         private BankBranch bankbranches;
-        private Set<BankDetails> bankdetails;
+        private BankDetails bankdetails;
 
         @BeforeEach
         void setUp() {
-            bankdetails = new HashSet<>();
            bankbranches=BankBranchFactory.createBankBranch("ABSA","1001111");
-           bankdetails.add(BankDetailsFactory.createBankDetails("1241424","12/4","857",bankbranches));
-            bankdetails.add(BankDetailsFactory.createBankDetails("0900909","16/4","811",bankbranches));
+           bankdetails = BankDetailsFactory.createBankDetails("1241424","12/4","857",bankbranches);
+
         }
 
         @Test

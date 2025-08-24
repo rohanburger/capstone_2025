@@ -6,4 +6,5 @@ import za.ac.cput.domain.Vehicle;
 
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
+    public boolean existsVehicleByLicensePlateNum(String licensePlateNum);
 }

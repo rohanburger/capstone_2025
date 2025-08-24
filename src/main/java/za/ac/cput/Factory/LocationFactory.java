@@ -17,7 +17,7 @@ public class LocationFactory {
 
     public static Location createLocation( Dropoff dropoff,  Pickup pickup){
         if(Helper.isEqual(pickup.getPickupStreet(), dropoff.getDropoffStreet())&&Helper.isEqual(pickup.getPickupSuburb(), dropoff.getDropoffSuburb())&&Helper.isEqual(pickup.getPickupCity(), dropoff.getDropoffCity())){
-            System.out.println("Error:Pickup Location cannot be the same as Dropoff Location");
+            throw new IllegalArgumentException("Error:Pickup Location cannot be the same as Dropoff Location");
         }
 
         return new Location.LocationBuilder()

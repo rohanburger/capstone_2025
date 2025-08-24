@@ -13,7 +13,7 @@ public class VehicleFactory {
     public static Vehicle createVehicle(String licensePlateNum) {
 
         if (Helper.isNullOrEmpty(licensePlateNum)){
-            System.out.println("Error: Vehicle license number is null or empty");
+            throw new IllegalArgumentException("Error: Vehicle license number is null or empty");
         }
 
         return new Vehicle.Builder()

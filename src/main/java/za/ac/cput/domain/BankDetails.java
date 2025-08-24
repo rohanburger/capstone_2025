@@ -21,11 +21,10 @@ public class BankDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long backDetailsId;
-    @Column(unique = true)
     private String bankCardNum;
     private String bankCardDate;
     private String bankCardCVV;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "bankBranchId")
     private BankBranch bankBranch; // Added link to BankBranch
 

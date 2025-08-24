@@ -39,12 +39,15 @@ public class DriverService implements IDriverService {
         return true;
     }
 
-    public Driver findByDriverEmailAndDriverPassword(String email, String password) {
-        return repository.findByDriverEmailAndDriverPassword(email, password).orElse(null);
-    }
-
     @Override
     public List<Driver> getAll() {
         return this.repository.findAll();
+    }
+
+    public Driver findByDriverEmailAndDriverPassword(String email, String password) {
+        return repository.findByDriverEmailAndDriverPassword(email, password).orElse(null);
+    }
+    public boolean existsByDriverEmail(String email) {
+        return repository.existsByDriverEmail(email);
     }
 }

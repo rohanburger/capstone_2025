@@ -15,7 +15,7 @@ public class BankBranchFactory {
 
     public static BankBranch createBankBranch(String bankBranchName, String bankBranchCode) {
         if (Helper.isNullOrEmpty(bankBranchName) || Helper.isNullOrEmpty(bankBranchCode)) {
-            System.out.println( "Error: Bank branch details are null or empty");
+            throw new IllegalArgumentException( "Error: Bank branch details are null or empty");
         }
 
         return new BankBranch.Builder()

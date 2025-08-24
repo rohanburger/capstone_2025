@@ -19,7 +19,7 @@ public class PickupFactory {
         //check if fields are null or empty
         if( Helper.isNullOrEmpty(pickupStreet)
                 || Helper.isNullOrEmpty(pickupSuburb) || Helper.isNullOrEmpty(pickupCity)) {
-            System.out.println("Error:Pickup field(s) are empty.");
+            throw new IllegalArgumentException("Error:Pickup field(s) are empty.");
 
         }
 

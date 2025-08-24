@@ -1,6 +1,7 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.Set;
 
@@ -16,15 +17,15 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+    @NotNull
     private String userName;
     private String userSurname;
     private String userPhoneNum;
-    @Column(unique = true)
     private String userEmail;
-    private String userPassword; //Password is to be implemented in the future
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "userId")
-    private Set<BankDetails> bankdetails; // linked to BankDetails class
+    private String userPassword;
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "userBankdetailsId")
+    private BankDetails bankdetails;
 
     //default constructor
     protected User() {
@@ -66,7 +67,7 @@ public class User {
         return userPassword;
     }
 
-    public Set<BankDetails> getBankdetails() {
+    public BankDetails getBankdetails() {
         return bankdetails;
     }
 
@@ -93,7 +94,7 @@ public class User {
         private String userPhoneNum;
         private String userEmail;
         private String userPassword;
-        private Set<BankDetails> bankdetails;
+        private BankDetails bankdetails;
 
         //return builder objects
         public UserBuilder setUserId(Long userId) {
@@ -126,7 +127,7 @@ public class User {
             return this;
         }
 
-        public UserBuilder setBankdetails(Set<BankDetails> bankdetails) {
+        public UserBuilder setBankdetails(BankDetails bankdetails) {
             this.bankdetails = bankdetails;
             return this;
         }

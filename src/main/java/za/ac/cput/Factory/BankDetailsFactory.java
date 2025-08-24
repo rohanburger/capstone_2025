@@ -18,7 +18,7 @@ public class BankDetailsFactory {
     public static BankDetails createBankDetails(String bankCardNum, String bankCardDate, String bankCardCVV, BankBranch bankBranch) {
         if (Helper.isNullOrEmpty(bankCardNum) || Helper.isNullOrEmpty(bankCardDate)
                 || Helper.isNullOrEmpty(bankCardCVV) ) {
-            System.out.println("Error: Bank details are null or empty.");
+            throw new IllegalArgumentException("Error: Bank details are null or empty.");
         }
 
         return new BankDetails.Builder()

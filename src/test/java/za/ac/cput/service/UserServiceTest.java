@@ -20,15 +20,15 @@ class UserServiceTest {
     @Autowired
     private UserService service;
     private User user;
-    private Set<BankDetails> bankdetails;
+    private BankDetails bankdetails;
     private BankBranch bankBranch;
 
     @BeforeEach
     void setUp() {
-        bankdetails = new HashSet<>();
         bankBranch =  BankBranchFactory.createBankBranch("Capitec", "CT543");
-        bankdetails.add(BankDetailsFactory.createBankDetails("1321416546", "08/29", "128", bankBranch));
-        User createUser = UserFactory.createUserWithAllAttributes("John","Doe","0827877878","john@gmail.com", bankdetails);
+        bankdetails = BankDetailsFactory.createBankDetails("1321416546", "08/29", "128", bankBranch);
+        User createUser = UserFactory.createUserWithAllAttributes("John","Doe",
+                "0827877878","john@gmail.com","1234", bankdetails);
         user = service.create(createUser);
         assertNotNull(user);
         assertNotNull(user.getUserId());

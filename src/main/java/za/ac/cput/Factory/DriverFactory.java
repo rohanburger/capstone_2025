@@ -16,11 +16,11 @@ import java.util.Set;
 public class DriverFactory {
     public static Driver createDriver( String driverName, String driverSurname,
                                       String driverPhoneNum, String driverEmail, String licenseNum, String driverPassword,
-                                      Set<Vehicle> vehicle) {
+                                       Vehicle vehicle) {
 
         if (Helper.isNullOrEmpty(driverName) || Helper.isNullOrEmpty(driverSurname)||Helper.isNullOrEmpty(driverPhoneNum)||
                 Helper.isNullOrEmpty(driverEmail)||Helper.isNullOrEmpty(licenseNum)){
-            System.out.println( "Error: Driver details are null or empty");
+            throw new IllegalArgumentException( "Error: Driver details are null or empty");
         }
 
         return new Driver.Builder()

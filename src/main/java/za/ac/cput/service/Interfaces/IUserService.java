@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IUserService extends IService<User, Long> {
     List<User> getAll(); //retrieves a list of all passengers
+
 }

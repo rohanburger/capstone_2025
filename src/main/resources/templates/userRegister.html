@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <title>User Register</title>
 </head>
-<body id="registerBody">
+<body id="registerBody" th:data-error="${error}">
 <div class="NavigationFlexContainer">
     <div class="logo"><img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide"></div>
     <div class="nav-links">
@@ -18,7 +18,7 @@
     </div>
 </div>
 <div class="RegisterFlexContainer">
-    <form th:action="@{/user/create}" method="post">
+    <form th:action="@{/userRegister/create}" method="post">
         <h1>User Register</h1>
         <label for="Name">Name</label>
         <input type="text"  id="Name" name="name" placeholder="e.g.John">
@@ -45,12 +45,17 @@
 
             <label for="bankCvv">CVV</label>
             <input type="text" id="bankCvv" name="cardCvv" placeholder="e.g.123">
-            <h2>Bank Branch</h2>
-            <label for="bankBranch">Bank Branch</label>
-            <input type="text" id="bankBranch" name="branchName" placeholder="e.g.ABSA">
 
-            <label for="bankBranchCode">Bank Branch Code</label>
-            <input type="text" id="bankBranchCode" name="branchCode" placeholder="e.g.1241541">
+            <h2>Bank Branch</h2>
+            <label for="bankBranch">Select Bank Branch</label>
+            <select id="bankBranch" name="branchId" required>
+                <option value="" disabled selected>Select your branch</option>
+                <th:block th:each="branch : ${branches}">
+                    <option th:value="${branch.bankBranchId}"
+                            th:text="${branch.bankBranchName + ' (' + branch.bankBranchCode + ')'}">
+                    </option>
+                </th:block>
+            </select>
         </div>
 
         <div class="registerLinks">
@@ -63,6 +68,11 @@
         <input type="submit" value="Register">
     </form>
 </div>
-
+<script>
+    const error = document.getElementById('registerBody').dataset.error;
+    if(error) {
+        alert(error);
+    }
+</script>
 </body>
 </html>

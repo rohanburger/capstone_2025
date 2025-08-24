@@ -40,4 +40,7 @@ public class VehicleService implements IVehicleService {
         repository.deleteById(aLong);
         return true;
     }
+    public boolean existsByPlateNumber(String plateNumber) {
+        return repository.existsVehicleByLicensePlateNum(plateNumber);
+    }
 }

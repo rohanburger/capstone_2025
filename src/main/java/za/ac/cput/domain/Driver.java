@@ -19,14 +19,12 @@ public class Driver {
     private String driverName;
     private String driverSurname;
     private String driverPhoneNum;
-    @Column(unique = true)
     private String driverEmail;
     private String driverPassword;
-    @Column(unique = true)
     private String licenseNum;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "driver_Id")
-    private Set<Vehicle> vehicles;
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "vehicleId")
+    private Vehicle vehicles;
 
     public Driver() {
     }
@@ -69,7 +67,7 @@ public class Driver {
     public String getDriverPassword() {
         return driverPassword;
     }
-    public Set<Vehicle> getVehicle() {
+    public Vehicle getVehicle() {
         return vehicles;
     }
 
@@ -95,7 +93,7 @@ public class Driver {
         private String driverEmail;
         private String licenseNum;
         private String driverPassword;
-        private Set<Vehicle> vehicles;
+        private Vehicle vehicles;
 
         public Builder setDriverId(Long driverId) {
             this.driverId = driverId;
@@ -132,7 +130,7 @@ public class Driver {
             return this;
         }
 
-        public Builder setVehicle(Set<Vehicle> vehicle) {
+        public Builder setVehicle(Vehicle vehicle) {
             this.vehicles = vehicle;
             return this;
         }

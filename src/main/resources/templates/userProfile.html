@@ -20,42 +20,52 @@
 </div>
 
 <div class="ProfileFlexContainer">
-    <form>
+
         <h1>Profile</h1>
         <label for="Name">Name</label>
-        <input type="text" id="Name" placeholder="e.g.John">
+        <input type="text" id="Name" name="name" th:value="${user.userName}"placeholder="e.g.John" readonly>
 
         <label for="surname">Surname</label>
-        <input type="text" id="surname" placeholder="e.g.Doe">
+        <input type="text" id="surname" name="surname" th:value="${user.userSurname}" placeholder="e.g.Doe" readonly>
 
         <label for="phoneNumber">Phone Number</label>
-        <input type="text" id="phoneNumber" placeholder="e.g.0123456789">
+        <input type="text" id="phoneNumber" name="phoneNumber" th:value="${user.userPhoneNum}"  placeholder="e.g.0123456789" readonly>
 
         <label for="email">Email</label>
-        <input type="email" id="email" placeholder="e.g.example@gmail.com" >
+        <input type="email" id="email" name="email" th:value="${user.userEmail}" placeholder="e.g.example@gmail.com" readonly>
 
         <label for="password">Password</label>
-        <input type="password" id="password" placeholder="e.g.password">
+        <input type="password" id="password" name="password" th:value="${user.userPassword}" placeholder="e.g.password" readonly>
 
         <label for="bankCardNumber">Card Number</label>
-        <input type="text" id="bankCardNumber" placeholder="e.g.1234 5678 9012 3456">
+        <input type="text" id="bankCardNumber" name="cardNumber"  th:value="${bankdetails.bankCardNum}" placeholder="e.g.1234 5678 9012 3456" readonly>
 
         <label for="bankCardDate">Card Experation Date</label>
-        <input type="text" id="bankCardDate" placeholder="e.g.MM/YY">
+        <input type="text" id="bankCardDate" name="cardExpiry" th:value="${bankdetails.bankCardDate}" placeholder="e.g.MM/YY"readonly>
 
         <label for="bankCvv">CVV</label>
-        <input type="text" id="bankCvv" placeholder="e.g.123">
+        <input type="text" id="bankCvv" name="cardCvv" th:value="${bankdetails.bankCardCVV}" placeholder="e.g.123" readonly>
 
-        <label for="bankBranch">Bank Branch</label>
-        <select  id="bankBranch"></select>
+        <h2>Bank Branch</h2>
+        <label for="bankBranch">Select Bank Branch</label>
+        <select id="bankBranch" name="branchId" disabled >
+            <option th:each="branch : ${branches}"
+                    th:value="${branch.bankBranchId}"
+                    th:selected="${branch.bankBranchId == bankdetails.bankBranch.bankBranchId}"
+                    th:text="${branch.bankBranchName + ' (' + branch.bankBranchCode + ')'}">
+            </option>
+        </select>
 
-        <label for="bankBranchCode">Bank Branch Code</label>
-        <select  id="bankBranchCode" ></select>
+        <form th:action="@{/userProfile/delete}" method="post">
+            <input type="submit" value="Delete Profile">
+        </form>
 
-        <input type="submit" value="Delete Profile">
         <input type="submit" value="Edit Profile">
 
-    </form>
+        <form th:action="@{/userProfile/logout}" method="post">
+            <input type="submit" value="Logout">
+        </form>
+
 
 </div>
 
