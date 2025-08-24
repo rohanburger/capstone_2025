@@ -51,11 +51,6 @@ public class navigationController {
         return "userBookingHistory";
     }
 
-    @GetMapping("/driverProfile")
-    public String driverProfilePage() {
-        return "driverProfile";
-    }
-
     @GetMapping("/driverBookedHistory")
     public String driverBookedHistoryPage() {
         return "driverBookedHistory";
