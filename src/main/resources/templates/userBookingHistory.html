@@ -9,39 +9,44 @@
 </head>
 <body>
 <div class="NavigationFlexContainer">
-    <div class="logo"><img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide"></div>
+    <div class="logo">
+        <img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide">
+    </div>
     <div class="nav-links">
         <a th:href="@{/}" >Home</a>
         <a th:if="${session.role == 'passenger'}" th:href="@{/bookARide}">Book a ride</a>
         <a th:if="${session.role == 'driver'}" th:href="@{/viewRideRequests}">View booking request</a>
-        <a th:if="${session.user != null}" th:href="@{/userProfile}">Profile</a>
+        <a th:if="${session.role == 'passenger'}" th:href="@{/userProfile}">User Profile</a>
+        <a th:if="${session.role == 'driver'}" th:href="@{/driverProfile}">Driver Profile</a>
         <a th:if="${session.user == null}" th:href="@{/userRegister}">Login/Register</a>
     </div>
 </div>
+
 <div class="userHistoryFlexContainer">
-    <div>
-        <form>
+    <div class="userBoxFlexContainer">
+        <div>
+            <div th:if="${#lists.isEmpty(bookings)}">
+                <p>No bookings found.</p>
+            </div>
+            <div th:each="booking : ${bookings}">
+                <p><strong>Driver Name:</strong> <span th:text="${booking.driver?.driverName}"></span></p>
+                <p><strong>Passenger Count:</strong> <span th:text="${booking.passengerCount}"></span></p>
+                <p><strong>Status:</strong> <span th:text="${booking.sessionStatus}"></span></p>
+                <p><strong>Pick Up:</strong>  <span th:text="${booking.location?.pickup?.pickupStreet}"></span>,
+                    <span th:text="${booking.location?.pickup?.pickupSuburb}"></span>,
+                    <span th:text="${booking.location?.pickup?.pickupCity}"></span></p>
+                <p><strong>Drop Off:</strong>
+                <span th:text="${booking.location?.dropoff?.dropoffStreet}"></span>,
+                <span th:text="${booking.location?.dropoff?.dropoffSuburb}"></span>,
+                <span th:text="${booking.location?.dropoff?.dropoffCity}"></span>
+                 </p>
+                <p><strong>Price:</strong> <span th:text="${booking.payment?.paymentamount}"></span></p>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Cancel Booking">
+        </div>
 
-            <Label for="driverName">Driver Name :</Label>
-            <label  id="driverName"> Sample </label><br>
-
-            <label for="passengerCount">Passenger Count :</label>
-            <label  id="passengerCount"> Sample </label><br>
-
-
-            <Label for="sessionStatus">Session Status :</Label>
-            <label  id="sessionStatus"> Sample </label><br>
-
-            <label for="pickUpStreet">Pick up Point:</label>
-            <label  id="pickUpStreet"> Sample </label><br>
-
-            <label for="pickUpSuburb">Drop Off Point:</label>
-            <label  id="pickUpSuburb"> Sample </label><br>
-
-            <label for="Payment">Price:</label>
-            <label  id="Payment"> Sample </label><br>
-
-        </form>
     </div>
 </div>
 </body>

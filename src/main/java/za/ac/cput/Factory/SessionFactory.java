@@ -24,7 +24,7 @@ public class SessionFactory {
         }
 
         return new Session.Builder()
-                .setPassenger(user)
+                .setUser(user)
                 .setDriver(driver)
                 .setLocation(location)
                 .setPassengerCount(passengerCount)

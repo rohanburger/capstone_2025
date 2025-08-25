@@ -44,7 +44,7 @@ class SessionServiceTest {
       Session createsession= SessionFactory.createSessionFactory( user, driver, location, 2,  "Active",payment);
       session = service.create(createsession);
       assertNotNull(session);
-      assertNotNull(session.getSessionid());
+      assertNotNull(session.getSessionId());
 
     }
 
@@ -60,7 +60,7 @@ class SessionServiceTest {
 
     @Test
     void read() {
-        Session sessionread = service.read(session.getSessionid());
+        Session sessionread = service.read(session.getSessionId());
         assertNotNull(sessionread);
         System.out.println(sessionread);
 
@@ -79,7 +79,7 @@ class SessionServiceTest {
 
     @Test
     void delete() {
-        boolean deleted = service.delete(session.getSessionid());
+        boolean deleted = service.delete(session.getSessionId());
         assertTrue(deleted);
     }
 

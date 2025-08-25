@@ -36,7 +36,7 @@ public class Helper {
 
 
     public static boolean notValidStatus(String s) {
-        if (s.equals("Expired") || s.equals("Pending") || s.equals("Active")) {//Checks if the string equals any of these values
+        if (s.equals("Completed") || s.equals("Pending") || s.equals("Active")) {//Checks if the string equals any of these values
             return false;//When not equals to any
         }
         return true;//When equals to any

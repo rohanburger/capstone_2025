@@ -46,10 +46,6 @@ public class navigationController {
         return "addBankDetails";
     }
 
-    @GetMapping("/userBookingHistory")
-    public String userBookingHistoryPage() {
-        return "userBookingHistory";
-    }
 
     @GetMapping("/driverBookedHistory")
     public String driverBookedHistoryPage() {
