@@ -17,6 +17,8 @@
     <a th:if="${session.role == 'passenger'}" th:href="@{/userProfile}">User Profile</a>
     <a th:if="${session.role == 'driver'}" th:href="@{/driverProfile}">Driver Profile</a>
     <a th:if="${session.user == null}" th:href="@{/userRegister}">Login/Register</a>
+    <a th:if="${session.role == 'driver'}" th:href="@{/driverBookedHistory}">Driver History</a>
+
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-package za.ac.cput.controller;
+package za.ac.cput.controller.Finished;
 
 
 import jakarta.servlet.http.HttpSession;
@@ -14,9 +14,6 @@ import za.ac.cput.domain.User;
 import za.ac.cput.service.BankBranchService;
 import za.ac.cput.service.BankDetailsService;
 import za.ac.cput.service.UserService;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/userRegister")

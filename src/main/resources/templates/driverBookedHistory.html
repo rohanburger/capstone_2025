@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ff0db6d3d3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <title>Driver History</title>
+    <title>Profile History</title>
 </head>
-<body>
+<body id="driverHistoryBody" th:data-error="${error}">
 <div class="NavigationFlexContainer">
-    <div class="logo"><img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide"></div>
+    <div class="logo">
+        <img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide">
+    </div>
     <div class="nav-links">
         <a th:href="@{/}" >Home</a>
         <a th:if="${session.role == 'passenger'}" th:href="@{/bookARide}">Book a ride</a>
@@ -19,30 +21,30 @@
         <a th:if="${session.user == null}" th:href="@{/userRegister}">Login/Register</a>
     </div>
 </div>
-<div class="driverHistoryFlexContainer">
-    <div>
-        <form>
-            <Label for="userName">Passenger Name :</Label>
-            <label  id="userName"> Sample </label><br>
 
-            <label for="passengerCount">Passenger Count :</label>
-            <label  id="passengerCount"> Sample </label><br>
+<div class="viewSessionsFlexContainer" >
+    <div th:if="${#lists.isEmpty(bookings)}">
+        <p>No bookings found.</p>
+    </div>
 
+    <div th:each="booking : ${bookings}">
+        <p><strong>Driver Name:</strong> <span th:text="${booking.driver?.driverName}"></span></p>
+        <p><strong>Passenger Count:</strong> <span th:text="${booking.passengerCount}"></span></p>
+        <p><strong>Status:</strong> <span th:text="${booking.sessionStatus}"></span></p>
+        <p><strong>Pick Up:</strong> <span th:text="${booking.location?.pickup?.pickupStreet}"></span>,
+            <span th:text="${booking.location?.pickup?.pickupSuburb}"></span>,
+            <span th:text="${booking.location?.pickup?.pickupCity}"></span></p>
+        <p><strong>Drop Off:</strong> <span th:text="${booking.location?.dropoff?.dropoffStreet}"></span>,
+            <span th:text="${booking.location?.dropoff?.dropoffSuburb}"></span>,
+            <span th:text="${booking.location?.dropoff?.dropoffCity}"></span></p>
 
-            <Label for="sessionStatus">Session Status :</Label>
-            <label  id="sessionStatus"> Sample </label><br>
-
-            <label for="pickUpStreet">Pick up Point:</label>
-            <label  id="pickUpStreet"> Sample </label><br>
-
-            <label for="pickUpSuburb">Drop Off Point:</label>
-            <label  id="pickUpSuburb"> Sample </label><br>
-
-            <label for="Payment">Price:</label>
-            <label  id="Payment"> Sample </label><br>
-
-        </form>
     </div>
 </div>
+<script>
+    const error = document.getElementById('driverHistoryBody').dataset.error;
+    if(error) {
+        alert(error);
+    }
+</script>
 </body>
 </html>

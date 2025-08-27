@@ -1,10 +1,10 @@
-package za.ac.cput.controller;
+package za.ac.cput.controller.Finished;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class navigationController {
+public class NavigationController {
 
     @GetMapping("/")
     public String home() {
@@ -21,10 +21,6 @@ public class navigationController {
         return "bookARide";
     }
 
-    @GetMapping("/viewRideRequests")
-    public String viewRideRequests() {
-        return "viewRideRequests";
-    }
 
     @GetMapping("/userLogin")
     public String loginPage() {
@@ -45,13 +41,5 @@ public class navigationController {
     public String addBankDetails() {
         return "addBankDetails";
     }
-
-
-    @GetMapping("/driverBookedHistory")
-    public String driverBookedHistoryPage() {
-        return "driverBookedHistory";
-    }
-
-
 
 }

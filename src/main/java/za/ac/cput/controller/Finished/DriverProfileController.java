@@ -1,4 +1,4 @@
-package za.ac.cput.controller;
+package za.ac.cput.controller.Finished;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ import za.ac.cput.service.VehicleService;
 
 @Controller
 @RequestMapping("/driverProfile")
-public class driverProfileController {
+public class DriverProfileController {
     private DriverService driverService;
     private VehicleService vehicleService;
 
     @Autowired
-    public driverProfileController(DriverService driverService,VehicleService vehicleService){
+    public DriverProfileController(DriverService driverService, VehicleService vehicleService){
         this.driverService = driverService;
         this.vehicleService = vehicleService;
     }

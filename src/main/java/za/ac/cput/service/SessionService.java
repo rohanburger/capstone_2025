@@ -38,22 +38,36 @@ public class SessionService implements ISessionService {
         repository.deleteById(s);
         return true;
     }
+    @Override
+    public List<Session> getAll() {
+        return repository.findAll();
+    }
+
 
     public boolean canCreateSession(User user) {
         if (user == null) return false;
 
-        // Check if there's any active session for this user
-        return repository
-                .findByUserAndSessionStatus(user, "Pending")
-                .isEmpty();
+        List<Session> pendingSessions = repository.findByUserAndSessionStatus(user, "Pending");
+        List<Session> activeSessions  = repository.findByUserAndSessionStatus(user, "Active");
+
+        return pendingSessions.isEmpty() && activeSessions.isEmpty();
     }
 
     public List<Session> getSessionsForUser(User user) {
         return repository.findByUser_UserId(user.getUserId());
     }
-    @Override
-    public List<Session> getAll() {
-        return repository.findAll();
+
+    public List<Session> getPendingSessions() {
+        return repository.findBySessionStatus("Pending");
     }
+
+    public List<Session> getActiveSessionsByDriver(Long driverId) {
+        return repository.findByDriver_DriverIdAndSessionStatus(driverId, "Active");
+    }
+
+    public List<Session> getAllSessionsByDriver(Long driverId) {
+        return repository.findByDriver_DriverId(driverId);
+    }
+
 
 }

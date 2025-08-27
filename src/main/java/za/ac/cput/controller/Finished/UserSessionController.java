@@ -1,4 +1,4 @@
-package za.ac.cput.controller;
+package za.ac.cput.controller.Finished;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +18,15 @@ import za.ac.cput.domain.User;
 import za.ac.cput.service.SessionService;
 import za.ac.cput.service.UserService;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 @RequestMapping("/userSession")
-public class userSessionController {
+public class UserSessionController {
 
     private SessionService sessionService;
     private UserService userService;
 
     @Autowired
-    public userSessionController(SessionService sessionService, UserService userService) {
+    public UserSessionController(SessionService sessionService, UserService userService) {
         this.sessionService = sessionService;
         this.userService = userService;
     }

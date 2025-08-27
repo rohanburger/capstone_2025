@@ -1,4 +1,4 @@
-package za.ac.cput.controller;
+package za.ac.cput.controller.Finished;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +10,6 @@ import za.ac.cput.Factory.VehicleFactory;
 import za.ac.cput.domain.*;
 import za.ac.cput.service.DriverService;
 import za.ac.cput.service.VehicleService;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/driverRegister")

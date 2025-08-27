@@ -1,4 +1,4 @@
-package za.ac.cput.controller;
+package za.ac.cput.controller.Finished;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
