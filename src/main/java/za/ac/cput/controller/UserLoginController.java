@@ -3,17 +3,29 @@ package za.ac.cput.controller;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import za.ac.cput.domain.User;
 import za.ac.cput.service.UserService;
 
 @Controller
+@RequestMapping("/userLogin")
 public class UserLoginController {
-    @Autowired
-    private UserService userService;
 
-    @PostMapping("/userLogin")
+    private UserService userService;
+    @Autowired
+    public UserLoginController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping
+    public String showLoginPage() {
+        return "userLogin";
+    }
+
+    @PostMapping
     public String userLogin(@RequestParam("email") String email,// Captures the email and password from the form
                             @RequestParam("password") String password,// Captures the email and password from the form
                             HttpSession session) {// Handles the /userLogin POST request

@@ -1,6 +1,8 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 /*
     Session.java
@@ -23,6 +25,7 @@ public class Session {
     // Many sessions can have one driver
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "driverId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Driver driver;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})

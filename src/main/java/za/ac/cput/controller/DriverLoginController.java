@@ -3,18 +3,29 @@ package za.ac.cput.controller;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import za.ac.cput.domain.Driver;
 import za.ac.cput.service.DriverService;
 
 @Controller
+@RequestMapping("/driverLogin")
 public class DriverLoginController {
 
-    @Autowired
     private DriverService driverService;
+    @Autowired
+    public DriverLoginController(DriverService driverService) {
+        this.driverService = driverService;
+    }
 
-    @PostMapping("/driverLogin")//Hanles the /driverLogin POST request
+    @GetMapping
+    public String showLoginPage() {
+        return "driverLogin"; // This should match your Thymeleaf/HTML template name
+    }
+
+    @PostMapping//Hanles the /driverLogin POST request
     public String driverLogin(@RequestParam("email") String email, // Captures the email and password from the form
                               @RequestParam("password") String password,
                               HttpSession session) {

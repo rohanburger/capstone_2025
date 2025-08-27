@@ -19,7 +19,7 @@ import za.ac.cput.service.SessionService;
 import za.ac.cput.service.UserService;
 
 @Controller
-@RequestMapping("/userSession")
+@RequestMapping("/bookARide")
 public class UserSessionController {
 
     private SessionService sessionService;
