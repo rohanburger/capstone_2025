@@ -8,7 +8,7 @@
 body{
     width: 100%;
     height: 100vh;
-    background:url("/LekkaRide/images/CT_Night.jpeg") no-repeat;
+    background-image: url("../images/CT_Night.jpeg");
     background-size: cover;
     display: block;
     overflow-x: hidden;
@@ -232,13 +232,6 @@ h3{
 }
 .RegisterFlexContainer a:hover{
     color: rgba(74, 74, 74, 0.7);
-}
-
-#registerBody{
-    width: 100%;
-    height: 150vh;
-    background: url("/LekkaRide/images/CT_Night.jpeg")  no-repeat;
-    background-size: cover;
 }
 
 /*login*/
@@ -551,22 +544,6 @@ h3{
     color: #4A4A4A;
 }
 
-#profileBody{
-    width: 100%;
-    height: 140vh;
-    background: url("/LekkaRide/images/CT_Night.jpeg")  no-repeat;
-    background-size: cover;
-    display: block;
-    overflow-x: hidden;
-}
-
-#driverprofileBody{
-    width: 100%;
-    height: 110vh;
-    background: url("/LekkaRide/images/CT_Night.jpeg")  no-repeat;
-    background-size: cover;
-}
-
 /*user history*/
 .userHistoryFlexContainer{
     width: 40%;
@@ -711,3 +688,8 @@ h3{
 .viewSessionsFlexContainer label{
     color: #4A4A4A;
 }
+
+#NoSessionP{
+    color: #4A4A4A;
+}
+

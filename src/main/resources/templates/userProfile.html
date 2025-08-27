@@ -1,56 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/ff0db6d3d3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <title>Profile</title>
+    <meta charset="UTF-8"> <!-- Sets the character encoding for the page -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes page responsive -->
+    <script src="https://kit.fontawesome.com/ff0db6d3d3.js" crossorigin="anonymous"></script> <!-- Font Awesome for icons -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> <!-- Links the external CSS file (Thymeleaf syntax) -->
+    <title>Profile</title> <!-- Title displayed in the browser tab -->
 </head>
-<body id="profileBody">
+<body id="userProfile"  th:data-error="${error}" > <!-- Body tag with an ID for styling -->
+
+<!-- Navigation bar container -->
 <div class="NavigationFlexContainer">
+    <!-- Logo section -->
     <div class="logo"><img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide"></div>
+
+    <!-- Navigation links -->
     <div class="nav-links">
+        <!-- Home link -->
         <a th:href="@{/}" >Home</a>
+
+        <!-- Only show this link if user is a passenger -->
         <a th:if="${session.role == 'passenger'}" th:href="@{/bookARide}">Book a ride</a>
+
+        <!-- Only show this link if user is a driver -->
         <a th:if="${session.role == 'driver'}" th:href="@{/viewRideRequests}">View booking request</a>
+
+        <!-- Passenger profile link -->
         <a th:if="${session.role == 'passenger'}" th:href="@{/userProfile}">User Profile</a>
+
+        <!-- Driver profile link -->
         <a th:if="${session.role == 'driver'}" th:href="@{/driverProfile}">Driver Profile</a>
+
+        <!-- Login/Register link for non-logged-in users -->
         <a th:if="${session.user == null}" th:href="@{/userRegister}">Login/Register</a>
+
+        <!-- Passenger booking history -->
         <a th:if="${session.role == 'passenger'}" th:href="@{/userBookingHistory}">Profile history</a>
     </div>
 </div>
 
+<!-- Profile content container -->
 <div class="ProfileFlexContainer">
 
+    <!-- Form to update user profile -->
     <form th:action="@{/userProfile/update}" method="post">
         <h1>Profile</h1>
+
+        <!-- Hidden field to store user ID -->
         <input type="hidden" name="userId" th:value="${user.userId}"/>
+
+        <!-- User name field -->
         <label for="Name">Name</label>
         <input type="text" id="Name" name="name" th:value="${user.userName}" >
 
+        <!-- User surname field -->
         <label for="surname">Surname</label>
         <input type="text" id="surname" name="surname" th:value="${user.userSurname}"  >
 
+        <!-- Phone number field -->
         <label for="phoneNumber">Phone Number</label>
         <input type="text" id="phoneNumber" name="phoneNumber" th:value="${user.userPhoneNum}"   >
 
+        <!-- Email field -->
         <label for="email">Email</label>
         <input type="email" id="email" name="email" th:value="${user.userEmail}"  >
 
+        <!-- Password field -->
         <label for="password">Password</label>
         <input type="password" id="password" name="password" th:value="${user.userPassword}"  >
 
+        <!-- Bank card number field -->
         <label for="bankCardNumber">Card Number</label>
         <input type="text" id="bankCardNumber" name="cardNumber"  th:value="${bankdetails.bankCardNum}"  >
 
+        <!-- Bank card expiration date field -->
         <label for="bankCardDate">Card Experation Date</label>
         <input type="text" id="bankCardDate" name="cardExpiry" th:value="${bankdetails.bankCardDate}" >
 
+        <!-- CVV field -->
         <label for="bankCvv">CVV</label>
         <input type="text" id="bankCvv" name="cardCvv" th:value="${bankdetails.bankCardCVV}" >
 
         <h2>Bank Branch</h2>
+
+
         <label for="bankBranch">Select Bank Branch</label>
         <select id="bankBranch" name="branchId"  >
             <option th:each="branch : ${branches}"
@@ -60,20 +93,25 @@
             </option>
         </select>
 
+        <!-- Submit button to save changes -->
         <input type="submit" value="Edit Profile">
-        </form>
+    </form>
 
+    <!-- Form to delete profile -->
+    <form th:action="@{/userProfile/delete}" method="post">
+        <input type="submit" value="Delete Profile">
+    </form>
 
-        <form th:action="@{/userProfile/delete}" method="post">
-            <input type="submit" value="Delete Profile">
-        </form>
-
-
-
-        <form th:action="@{/userProfile/logout}" method="post">
-            <input type="submit" value="Logout">
-        </form>
+    <!-- Form to logout -->
+    <form th:action="@{/userProfile/logout}" method="post">
+        <input type="submit" value="Logout">
+    </form>
 </div>
-
+<script>
+    const error = document.getElementById('userProfile').dataset.error;
+    if(error) {
+        alert(error);
+    }
+</script>
 </body>
 </html>

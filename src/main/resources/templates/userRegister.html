@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <title>User Register</title>
 </head>
-<body id="registerBody" th:data-error="${error}">
+<body id="userRegisterBody" th:data-error="${error}">
 <div class="NavigationFlexContainer">
     <div class="logo"><img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide"></div>
     <div class="nav-links">
@@ -70,7 +70,7 @@
     </form>
 </div>
 <script>
-    const error = document.getElementById('registerBody').dataset.error;
+    const error = document.getElementById('userRegisterBody').dataset.error;
     if(error) {
         alert(error);
     }

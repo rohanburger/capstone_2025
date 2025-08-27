@@ -24,7 +24,7 @@
 
 <div class="viewSessionsFlexContainer" >
     <div th:if="${#lists.isEmpty(bookings)}">
-        <p>No bookings found.</p>
+        <p id="NoSessionP">No bookings found.</p>
     </div>
 
     <div th:each="booking : ${bookings}">
@@ -37,6 +37,7 @@
         <p><strong>Drop Off:</strong> <span th:text="${booking.location?.dropoff?.dropoffStreet}"></span>,
             <span th:text="${booking.location?.dropoff?.dropoffSuburb}"></span>,
             <span th:text="${booking.location?.dropoff?.dropoffCity}"></span></p>
+        <p><strong>Price:R</strong> <span th:text="${booking.payment?.paymentamount}"></span></p>
 
     </div>
 </div>

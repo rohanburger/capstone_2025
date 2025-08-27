@@ -7,7 +7,7 @@
   <link rel="stylesheet" th:href="@{/css/style.css}" />
   <title>Profile</title>
 </head>
-<body id="driverprofileBody">
+<body id="driverProfile" th:data-error="${error}">
 <div class="NavigationFlexContainer">
   <div class="logo"><img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide"></div>
   <div class="nav-links">
@@ -56,5 +56,12 @@
     <input type="submit" value="Logout">
   </form>
 </div>
+<script>
+  const error = document.getElementById('driverProfile').dataset.error;
+  if(error) {
+    alert(error);
+  }
+</script>
+
 </body>
 </html>

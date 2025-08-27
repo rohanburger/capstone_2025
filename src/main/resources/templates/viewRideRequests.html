@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <title>Profile History</title>
 </head>
-<body id="viewRideRequestBody" th:data-error="${error}">
+<body id="viewRideRequestBody"  th:data-error="${error}">
 <div class="NavigationFlexContainer">
     <div class="logo">
         <img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide">
@@ -24,7 +24,7 @@
 
 <div class="viewSessionsFlexContainer" >
     <div th:if="${#lists.isEmpty(bookings)}">
-        <p>No bookings found.</p>
+        <p id="NoSessionP" >No bookings found.</p>
     </div>
 
     <div th:each="booking : ${bookings}">

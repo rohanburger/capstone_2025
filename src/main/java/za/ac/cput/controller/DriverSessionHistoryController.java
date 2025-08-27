@@ -14,27 +14,26 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/driverBookedHistory")
-public class driverSessionHistoryController {
+public class DriverSessionHistoryController {
 
     private  SessionService sessionService;
 
     @Autowired
-    public driverSessionHistoryController(SessionService sessionService) {
+    public DriverSessionHistoryController(SessionService sessionService) {
         this.sessionService = sessionService;
     }
 
     @GetMapping
-    public String viewDriverHistory(HttpSession httpSession, Model model) {
-        Driver driver = (Driver) httpSession.getAttribute("user");
+    public String viewDriverHistory(HttpSession httpSession, Model model) {// Handles the /driverBookedHistory GET request
+        Driver driver = (Driver) httpSession.getAttribute("user");// Gets the user from the session and casts it to a Driver object
         if (driver == null) {
             return "redirect:/userRegister";
         }
 
         // Get all sessions for this driver
         List<Session> driverSessions = sessionService.getAllSessionsByDriver(driver.getDriverId());
-        model.addAttribute("bookings", driverSessions);
-        model.addAttribute("loggedInUser", driver);
-
-        return "driverBookedHistory"; // Thymeleaf template name
+        model.addAttribute("bookings", driverSessions);// sets the driverSessions object to bookings in the model
+        model.addAttribute("loggedInUser", driver);// sets the Driver object to the loggedInUser in the model
+        return "driverBookedHistory";
     }
 }

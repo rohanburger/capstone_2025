@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <title>Profile History</title>
 </head>
-<body id="userHistoryBody" th:data-error="${error}">
+<body id="userBookingHistory" th:data-error="${error}">
 <div class="NavigationFlexContainer">
     <div class="logo">
         <img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide">
@@ -23,9 +23,8 @@
 </div>
 
 <div class="userHistoryFlexContainer" >
-
             <div th:if="${#lists.isEmpty(bookings)}">
-                <p>No bookings found.</p>
+                <p id="NoSessionP">No bookings found.</p>
             </div>
             <div th:each="booking : ${bookings}" >
                 <p><strong>Driver Name:</strong> <span th:text="${booking.driver?.driverName}"></span></p>
@@ -41,7 +40,7 @@
                     <span th:text="${booking.location?.dropoff?.dropoffSuburb}"></span>,
                     <span th:text="${booking.location?.dropoff?.dropoffCity}"></span>
                 </p>
-                <p><strong>Price:</strong> <span th:text="${booking.payment?.paymentamount}"></span></p>
+                <p><strong>Price:R</strong> <span th:text="${booking.payment?.paymentamount}"></span></p>
 
                 <!-- Cancel form inside the loop -->
                 <form th:action="@{/userBookingHistory/cancel}" method="post">
@@ -58,7 +57,7 @@
 
 </div>
 <script>
-    const error = document.getElementById('userHistoryBody').dataset.error;
+    const error = document.getElementById('userBookingHistory').dataset.error;
     if(error) {
         alert(error);
     }

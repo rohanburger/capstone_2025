@@ -1,4 +1,4 @@
-package za.ac.cput.controller.Finished;
+package za.ac.cput.controller;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,49 +34,49 @@ public class UserSessionController {
     @GetMapping
     public String createSessionPage(Model model) {
         return "bookARide";
-    }
+    }// Handles the /userSession GET request
 
     @PostMapping("/create")
     public String createSession(
-            @RequestParam("passengerCount") int passengerCount,
-            @RequestParam("pickUpStreet") String pickUpStreet,
-            @RequestParam("pickUpSuburb") String pickUpSuburb,
-            @RequestParam("pickUpCity") String pickUpCity,
-            @RequestParam("dropOffStreet") String dropOffStreet,
-            @RequestParam("dropOffSuburb") String dropOffSuburb,
-            @RequestParam("dropOffCity") String dropOffCity,
-            HttpSession session,
+            @RequestParam("passengerCount") int passengerCount,// Captures the passengerCount from the form
+            @RequestParam("pickUpStreet") String pickUpStreet,// Captures the pickUpStreet from the form
+            @RequestParam("pickUpSuburb") String pickUpSuburb,// Captures the pickUpSuburb from the form
+            @RequestParam("pickUpCity") String pickUpCity,// Captures the pickUpCity from the form
+            @RequestParam("dropOffStreet") String dropOffStreet,// Captures the dropOffStreet from the form
+            @RequestParam("dropOffSuburb") String dropOffSuburb,// Captures the dropOffSuburb from the form
+            @RequestParam("dropOffCity") String dropOffCity,// Captures the dropOffCity from the form
+            HttpSession session,// Captures the session object from the form
             Model model
     ) {
-        User sessionUser = (User) session.getAttribute("user");
+        User sessionUser = (User) session.getAttribute("user");// Captures the user object from the session and casts it to a User object
         if (sessionUser == null) {
             model.addAttribute("error", "You must be logged in to create a session");
             return "redirect:/userRegister";
         }
 
 
-        User user = userService.read(sessionUser.getUserId());
+        User user = userService.read(sessionUser.getUserId());// Calls the read method in the UserService class to retrieve the user with the specified userId
         if (user == null) {
             model.addAttribute("error", "User not found");
             return "bookARide";
         }
 
-        if (!sessionService.canCreateSession(user)) {
+        if (!sessionService.canCreateSession(user)) {// Checks if the user can create a session
             model.addAttribute("error", "You already have an active session!");
             return "bookARide";
         }
 
         try {
-            Location location = LocationFactory.createLocation(
+            Location location = LocationFactory.createLocation(// Creates a new Location object with the specified pickUpStreet, pickUpSuburb, pickUpCity, dropOffStreet, dropOffSuburb, and dropOffCity
                     DropoffFactory.createDropoff(dropOffStreet, dropOffSuburb, dropOffCity),
                     PickupFactory.createPickupWithAttributes(pickUpStreet, pickUpSuburb, pickUpCity)
             );
 
-            Session usersession = SessionFactory.createSessionFactory(
+            Session usersession = SessionFactory.createSessionFactory(// Creates a new Session object with the specified user, location, passengerCount, sessionStatus, and sessionType
                     user, null, location, passengerCount, "Pending", null
             );
 
-            sessionService.create(usersession);
+            sessionService.create(usersession);// Calls the create method in the SessionService class to create the session
             return "redirect:/";
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
