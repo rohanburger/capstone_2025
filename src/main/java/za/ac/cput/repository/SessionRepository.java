@@ -16,9 +16,9 @@ import java.util.List;
 */
 @Repository
 public interface SessionRepository extends JpaRepository<Session, Long> {
-    List<Session> findByUserAndSessionStatus(User user, String sessionStatus);
-    List<Session> findByUser_UserId(Long userId);
-    List<Session> findBySessionStatus(String sessionStatus);
-    List<Session> findByDriver_DriverIdAndSessionStatus(Long driverId, String sessionStatus);
-    List<Session> findByDriver_DriverId(Long driverId);
+    List<Session> findByUserAndSessionStatus(User user, String sessionStatus);// Gets a session based on user and session status
+    List<Session> findByUser_UserId(Long userId);//Gets a session based on the userId
+    List<Session> findBySessionStatus(String sessionStatus);//Gets the session based on status
+    List<Session> findByDriver_DriverIdAndSessionStatus(Long driverId, String sessionStatus);//Gets a session based driver id and session status
+    List<Session> findByDriver_DriverId(Long driverId);//Gets a session based on driver id
 }

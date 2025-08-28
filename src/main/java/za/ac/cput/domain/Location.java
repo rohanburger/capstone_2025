@@ -17,11 +17,13 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long locationId;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)//Location has a one to one relationship with dropoff
+    // if you do ALL operations to a Location, associated dropoff will also be affected
     @JoinColumn(name = "dropoffId")
     private Dropoff dropoff;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)//Location has a one to one relationship with pickup
+    // if you do ALL operations to a Location, associated pickup will also be affected
     @JoinColumn(name = "pickupId")
     private Pickup pickup;
 

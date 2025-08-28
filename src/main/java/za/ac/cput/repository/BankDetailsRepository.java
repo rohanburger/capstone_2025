@@ -6,5 +6,5 @@ import za.ac.cput.domain.BankDetails;
 
 @Repository
 public interface BankDetailsRepository extends JpaRepository<BankDetails, Long> {
-     boolean existsBybankCardNum(String cardNumber);
+     boolean existsBybankCardNum(String cardNumber); //Check is bankCardNum already exists
 }

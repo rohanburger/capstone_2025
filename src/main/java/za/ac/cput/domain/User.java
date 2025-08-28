@@ -17,13 +17,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    @NotNull
     private String userName;
     private String userSurname;
     private String userPhoneNum;
     private String userEmail;
     private String userPassword;
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)//User has a one to one relationship with bankdetails
+    // if you do ALL operations to a User, associated bankdetails will also be affected
+    //Eager - when parent entity is loaded , relationship is also loaded
     @JoinColumn(name = "userBankdetailsId")
     private BankDetails bankdetails;
 

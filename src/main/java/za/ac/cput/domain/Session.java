@@ -18,24 +18,29 @@ public class Session {
     private Long sessionId;
 
     // Many sessions can belong to one user
+    @OnDelete(action = OnDeleteAction.CASCADE)// If a user is deleted the session is removed
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    // if you pesist/save or merge/update Session, associated user will also be
     @JoinColumn(name = "passengerId")
     private User user;
 
     // Many sessions can have one driver
+    @OnDelete(action = OnDeleteAction.CASCADE)//if a Driver is deleted the sessions is removed
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    // if you pesist/save or merge/update Session, associated driver will also be
     @JoinColumn(name = "driverId")
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Driver driver;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})//Session has a one to relationship with locations
+    // if you pesist/save or merge/update Session, associated location will also be
     @JoinColumn(name = "locationId")
     private Location location;
 
     private int passengerCount;
     private String sessionStatus;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)//Session has a one to one relationship to payment
+    // if you pesist/save or merge/update Session, associated payment will also be
     @JoinColumn(name = "paymentId")
     private Payment payment;
 

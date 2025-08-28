@@ -47,7 +47,6 @@ public class UserService implements IUserService {
         return repository.findByUserEmailAndUserPassword(email, password).orElse(null);
     }
 
-
     public boolean existsByEmail(String email) {
         return repository.existsByUserEmail(email);
     }

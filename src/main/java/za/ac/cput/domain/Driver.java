@@ -22,7 +22,9 @@ public class Driver {
     private String driverEmail;
     private String driverPassword;
     private String licenseNum;
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)//Driver and vehichle have a one to one relationship
+    // if you do ALL operations to a Driver, associated vehicle will also be affected
+    //Eager - when parent entity is loaded , relationship is also loaded
     @JoinColumn(name = "vehicleId")
     private Vehicle vehicles;
 

@@ -24,9 +24,11 @@ public class BankDetails {
     private String bankCardNum;
     private String bankCardDate;
     private String bankCardCVV;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})// Bankdetails can have many to one relationship with bankbranch
+    // if you pesist/save or merge/update Bankdetails, associated bankbranch will also be
     @JoinColumn(name = "bankBranchId")
-    private BankBranch bankBranch; // Added link to BankBranch
+    private BankBranch bankBranch;
 
     //default constructor
     protected BankDetails() {
