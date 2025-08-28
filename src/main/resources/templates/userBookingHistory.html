@@ -26,7 +26,7 @@
             <div th:if="${#lists.isEmpty(bookings)}">
                 <p id="NoSessionP">No bookings found.</p>
             </div>
-            <div th:each="booking : ${bookings}" >
+            <div th:each="booking : ${bookings}" ><!--Loop through each iteration of Sessions/Bookings (Bookings just for naming)-->
                 <p><strong>Driver Name:</strong> <span th:text="${booking.driver?.driverName}"></span></p>
                 <p><strong>Passenger Count:</strong> <span th:text="${booking.passengerCount}"></span></p>
                 <p><strong>Status:</strong> <span th:text="${booking.sessionStatus}"></span></p>
