@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ff0db6d3d3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <title>Profile</title>
+    <title>User Profile</title>
 </head>
 <body id="userProfile"  th:data-error="${error}" >
 <div class="NavigationFlexContainer">
@@ -18,13 +18,13 @@
         <a th:if="${session.role == 'passenger'}" th:href="@{/userProfile}">User Profile</a>
         <a th:if="${session.role == 'driver'}" th:href="@{/driverProfile}">Driver Profile</a>
         <a th:if="${session.user == null}" th:href="@{/userRegister}">Login/Register</a>
-        <a th:if="${session.role == 'passenger'}" th:href="@{/userBookingHistory}">Profile history</a>
+        <a th:if="${session.role == 'passenger'}" th:href="@{/userBookingHistory}">User Profile history</a>
     </div>
 </div>
 <!--Form containing inputs, the input values are populate by calling the domain.domainAttribute  -->
 <div class="ProfileFlexContainer">
     <form th:action="@{/userProfile/update}" method="post">
-        <h1>Profile</h1>
+        <h1>User Profile</h1>
         <input type="hidden" name="userId" th:value="${user.userId}"/>
         <label for="Name">Name</label>
         <input type="text" id="Name" name="name" th:value="${user.userName}" >
@@ -38,7 +38,7 @@
         <input type="password" id="password" name="password" th:value="${user.userPassword}"  >
         <label for="bankCardNumber">Card Number</label>
         <input type="text" id="bankCardNumber" name="cardNumber"  th:value="${bankdetails.bankCardNum}"  >
-        <label for="bankCardDate">Card Experation Date</label>
+        <label for="bankCardDate">Card Expiration Date</label>
         <input type="text" id="bankCardDate" name="cardExpiry" th:value="${bankdetails.bankCardDate}" >
         <label for="bankCvv">CVV</label>
         <input type="text" id="bankCvv" name="cardCvv" th:value="${bankdetails.bankCardCVV}" >
@@ -52,15 +52,15 @@
                     th:text="${branch.bankBranchName + ' (' + branch.bankBranchCode + ')'}">
             </option>
         </select>
-        <input type="submit" value="Edit Profile">
+        <input type="submit" class="proceedButton" value="Edit Profile">
     </form>
 
     <form th:action="@{/userProfile/delete}" method="post">
-        <input type="submit" value="Delete Profile">
+        <input type="submit" class="backTrackButton" value="Delete Profile">
     </form>
 
     <form th:action="@{/userProfile/logout}" method="post">
-        <input type="submit" value="Logout">
+        <input type="submit" class="backTrackButton" value="Logout">
     </form>
 </div>
 <script>

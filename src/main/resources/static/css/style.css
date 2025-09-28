@@ -402,10 +402,7 @@ h3{
 
 .bookARideFlexContainer input[type=submit]{
     width: 100%;
-    background-color:#4A4A4A;
-    border: 2px solid #4A4A4A;
     border-radius: 5px;
-    color: #F5F5F5;
     padding: 15px 20px;
     text-align: center;
     text-decoration: none;
@@ -415,11 +412,6 @@ h3{
     cursor: pointer;
 }
 
-.bookARideFlexContainer input[type=submit]:hover {
-    background-color: #F5F5F5;
-    border: 2px solid #4A4A4A ;
-    color: #4A4A4A;
-}
 /*View a Ride*/
 .viewARideFlexContainer{
     width: 30%;
@@ -525,10 +517,7 @@ h3{
 
 .ProfileFlexContainer input[type=submit]{
     width: 100%;
-    background-color:#4A4A4A;
-    border: 2px solid #4A4A4A;
     border-radius: 5px;
-    color: #F5F5F5;
     padding: 15px 20px;
     text-align: center;
     text-decoration: none;
@@ -538,18 +527,31 @@ h3{
     cursor: pointer;
 }
 
-.ProfileFlexContainer input[type=submit]:hover {
+/*user history*/
+.historyTextBox{
+    width: 40%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-left: 30%;
+    margin-right: 30%;
     background-color: #F5F5F5;
-    border: 2px solid #4A4A4A ;
-    color: #4A4A4A;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
 }
 
-/*user history*/
+.historyTextBox h1{
+    color:#4A4A4A;
+}
+
 .userHistoryFlexContainer{
     width: 40%;
     padding: 20px;
     border-radius: 5px;
-    margin-top: 6%;
+    margin-top: 0.5%;
     margin-left: 30%;
     margin-right: 30%;
     color: #4A4A4A;
@@ -571,10 +573,7 @@ h3{
 
 .userHistoryFlexContainer input[type=submit]{
     width: 100%;
-    background-color:#4A4A4A;
-    border: 2px solid #4A4A4A;
     border-radius: 5px;
-    color: #F5F5F5;
     padding: 15px 20px;
     text-align: center;
     text-decoration: none;
@@ -582,12 +581,6 @@ h3{
     font-size: 18px;
     margin: 4px 2px;
     cursor: pointer;
-}
-
-.userHistoryFlexContainer input[type=submit]:hover {
-    background-color: #F5F5F5;
-    border: 2px solid #4A4A4A ;
-    color: #4A4A4A;
 }
 
 .userHistoryFlexContainer>div{
@@ -635,7 +628,7 @@ h3{
     width: 40%;
     padding: 20px;
     border-radius: 5px;
-    margin-top: 6%;
+    margin-top: 0.5%;
     margin-left: 30%;
     margin-right: 30%;
     color: #4A4A4A;
@@ -657,10 +650,7 @@ h3{
 
 .viewSessionsFlexContainer input[type=submit]{
     width: 100%;
-    background-color:#4A4A4A;
-    border: 2px solid #4A4A4A;
     border-radius: 5px;
-    color: #F5F5F5;
     padding: 15px 20px;
     text-align: center;
     text-decoration: none;
@@ -668,12 +658,6 @@ h3{
     font-size: 18px;
     margin: 4px 2px;
     cursor: pointer;
-}
-
-.viewSessionsFlexContainer input[type=submit]:hover {
-    background-color: #F5F5F5;
-    border: 2px solid #4A4A4A ;
-    color: #4A4A4A;
 }
 
 .viewSessionsFlexContainer>div{
@@ -692,4 +676,32 @@ h3{
 #NoSessionP{
     color: #4A4A4A;
 }
+
+.backTrackButton{
+    background-color: #F28B82 ;
+    border: 2px solid #F28B82;
+    color: #F5F5F5;
+}
+
+.backTrackButton:hover{
+    border: 2px solid #F28B82 ;
+    color:#F28B82;
+    background-color: #F5F5F5;
+}
+
+.proceedButton{
+    background-color: #66C18C  ;
+    border: 2px solid #66C18C ;
+    color: #F5F5F5;
+
+}
+
+.proceedButton:hover{
+    border: 2px solid #66C18C;
+    color:#66C18C;
+    background-color: #F5F5F5;
+}
+
+
+
 

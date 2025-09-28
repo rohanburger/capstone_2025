@@ -75,6 +75,59 @@ public class UserProfileHistoryController {
         model.addAttribute("loggedInUser", user);// Sets the loggedInUser object to the model attribute loggedInUser
         return "userBookingHistory";
     }
+    //rejects sets to pending
+    @PostMapping("/reject")
+    public String rejectBooking(@RequestParam("sessionId") Long sessionId, HttpSession httpSession, Model model) {
+        User user = (User) httpSession.getAttribute("user");// Get the user from the session and cast it to a User object
+        if (user == null) {
+            return "redirect:/userRegister";
+        }
+
+        Session booking = sessionService.read(sessionId);// Get the booking from the service using the session ID
+        if (booking != null && booking.getUser().getUserId().equals(user.getUserId())) {
+            // Check if the booking is not null and if the user ID matches the user ID in the session
+
+            Session updatedBooking = new Session.Builder()// Create a new Session object using the Builder class
+                    .copy(booking)// Copy the booking from the service using the session ID
+                    .setDriver(null)
+                    .setSessionStatus("Pending")
+                    .setPayment(null)
+                    .build();
+
+            sessionService.update(updatedBooking);
+        }
+
+        List<Session> userBookings = sessionService.getSessionsForUser(user);// Reload all bookings for the user from the service using the user ID
+        model.addAttribute("bookings", userBookings);// Sets the userBookings object to the model attribute bookings
+        model.addAttribute("loggedInUser", user);// Sets the loggedInUser object to the model attribute loggedInUser
+
+        return "redirect:/userBookingHistory";
+    }
+
+    //accepts sets to active
+    @PostMapping("/acceptResponse")
+    public String acceptBooking(@RequestParam("sessionId") Long sessionId, HttpSession httpSession, Model model) {
+        User user = (User) httpSession.getAttribute("user");// Get the user from the session and cast it to a User object
+        if (user == null) {
+            return "redirect:/userRegister";
+        }
+
+        Session booking = sessionService.read(sessionId);// Get the booking from the service using the session ID
+        if (booking != null && booking.getUser().getUserId().equals(user.getUserId())) {
+            // Check if the booking is not null and if the user ID matches the user ID in the session
+
+            Session updatedBooking = new Session.Builder()// Create a new Session object using the Builder class
+                    .copy(booking)// Copy the booking from the service using the session ID
+                    .setSessionStatus("Active")
+                    .build();
+            sessionService.update(updatedBooking);
+        }
+
+        List<Session> userBookings = sessionService.getSessionsForUser(user);// Reload all bookings for the user from the service using the user ID
+        model.addAttribute("bookings", userBookings);// Sets the userBookings object to the model attribute bookings
+        model.addAttribute("loggedInUser", user);// Sets the loggedInUser object to the model attribute loggedInUser
+        return "userBookingHistory";
+    }
 
     @PostMapping("/completed")
     public String completeBooking(@RequestParam("sessionId") Long sessionId,// Capture the session ID from the form

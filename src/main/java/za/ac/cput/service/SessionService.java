@@ -47,9 +47,10 @@ public class SessionService implements ISessionService {
     public boolean canCreateSession(User user) {
         if (user == null) return false;
         List<Session> pendingSessions = repository.findByUserAndSessionStatus(user, "Pending");
+        List<Session> pendingResponseSessions = repository.findByUserAndSessionStatus(user, "Pending Response");
         List<Session> activeSessions  = repository.findByUserAndSessionStatus(user, "Active");
 
-        return pendingSessions.isEmpty() && activeSessions.isEmpty();
+        return pendingSessions.isEmpty() && activeSessions.isEmpty() && pendingResponseSessions.isEmpty();
     }
 
     public List<Session> getSessionsForUser(User user) {

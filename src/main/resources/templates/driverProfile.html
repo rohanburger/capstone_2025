@@ -5,26 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/ff0db6d3d3.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" th:href="@{/css/style.css}" />
-  <title>Profile</title>
+  <title>Driver Profile</title>
 </head>
 <body id="driverProfile" th:data-error="${error}">
 <div class="NavigationFlexContainer">
   <div class="logo"><img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide"></div>
   <div class="nav-links">
-    <a th:href="@{/}" >Home</a>
+    <a th:href="@{/}">Home</a>
     <a th:if="${session.role == 'passenger'}" th:href="@{/bookARide}">Book a ride</a>
     <a th:if="${session.role == 'driver'}" th:href="@{/viewRideRequests}">View booking request</a>
     <a th:if="${session.role == 'passenger'}" th:href="@{/userProfile}">User Profile</a>
     <a th:if="${session.role == 'driver'}" th:href="@{/driverProfile}">Driver Profile</a>
     <a th:if="${session.user == null}" th:href="@{/userRegister}">Login/Register</a>
-    <a th:if="${session.role == 'driver'}" th:href="@{/driverBookedHistory}">Driver History</a>
+    <a th:if="${session.role == 'driver'}" th:href="@{/driverBookedHistory}">Driver Profile History</a>
 
   </div>
 </div>
 
 <div class="ProfileFlexContainer">
   <form th:action="@{/driverProfile/update}" method="post">
-    <h1>Profile</h1>
+    <h1> Driver Profile</h1>
     <input type="hidden" name="driverId" th:value="${driver.driverId}"/>
     <label for="Name">Name</label>
     <input type="text" id="Name" name="name" th:value="${driver.driverName}"placeholder="e.g.John">
@@ -41,19 +41,19 @@
     <label for="password">Password</label>
     <input type="password" id="password" name="password" th:value="${driver.driverPassword}" placeholder="e.g.password">
 
-    <label for="licenseNum">License Plate</label>
+    <label for="licenseNum">License Number</label>
     <input type="text" id="licenseNum" name="licenseNum" th:value="${driver.licenseNum}" placeholder="e.g.1234567890123456">
 
     <label for="LicensePlateNum">License Plate</label>
     <input type="text" id="LicensePlateNum" name="licensePlateNum" th:value="${vehicle.licensePlateNum}" placeholder="e.g.ABC123">
-    <input type="submit" value="Edit Profile">
+    <input type="submit" class="proceedButton" value="Edit Profile">
   </form>
 
   <form th:action="@{/driverProfile/delete}" method="post">
-    <input type="submit" value="Delete Profile">
+    <input type="submit"  class="backTrackButton"  value="Delete Profile">
   </form>
   <form th:action="@{/driverProfile/logout}" method="post">
-    <input type="submit" value="Logout">
+    <input type="submit"  class="backTrackButton"  value="Logout">
   </form>
 </div>
 <script>

@@ -78,7 +78,7 @@ public class DriverViewRideRequestsController {
         // Update session using Builder + copy
         Session updatedBooking = new Session.Builder()
                 .copy(booking)// copy the booking from the service using the session ID
-                .setSessionStatus("Active")// set the session status to Active
+                .setSessionStatus("Pending Response")// set the session status to Active
                 .setDriver(driver)
                 .setPayment(payment)
                 .build();

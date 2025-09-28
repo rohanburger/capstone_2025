@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ff0db6d3d3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <title>Profile History</title>
+    <title>User Profile History</title>
 </head>
 <body id="userBookingHistory" th:data-error="${error}">
 <div class="NavigationFlexContainer">
@@ -19,15 +19,21 @@
         <a th:if="${session.role == 'passenger'}" th:href="@{/userProfile}">User Profile</a>
         <a th:if="${session.role == 'driver'}" th:href="@{/driverProfile}">Driver Profile</a>
         <a th:if="${session.user == null}" th:href="@{/userRegister}">Login/Register</a>
+        <a th:if="${session.role == 'passenger'}" th:href="@{/userBookingHistory}">User Profile history</a>
     </div>
 </div>
 
-<div class="userHistoryFlexContainer" >
+<div class="historyTextBox">
+    <h1> User Profile History</h1>
+</div>
+
+<div class="userHistoryFlexContainer"  >
             <div th:if="${#lists.isEmpty(bookings)}">
                 <p id="NoSessionP">No bookings found.</p>
             </div>
-            <div th:each="booking : ${bookings}" ><!--Loop through each iteration of Sessions/Bookings (Bookings just for naming)-->
-                <p><strong>Driver Name:</strong> <span th:text="${booking.driver?.driverName}"></span></p>
+            <div th:each="booking : ${bookings}" ><!--Loop through each iteration of Sessions (Bookings just for naming , to not be confused with HTTP session) -->
+                <p><strong>Driver:</strong> <span th:text="${booking.driver?.driverName} +' '+ ${booking.driver?.driverSurname}"></span></p>
+                <p><strong>User:</strong>><span th:text="${booking.user?.userName} +' '+ ${booking.user?.userSurname}"></span></p>
                 <p><strong>Passenger Count:</strong> <span th:text="${booking.passengerCount}"></span></p>
                 <p><strong>Status:</strong> <span th:text="${booking.sessionStatus}"></span></p>
                 <p><strong>Pick Up:</strong>
@@ -43,14 +49,29 @@
                 <p><strong>Price:R</strong> <span th:text="${booking.payment?.paymentamount}"></span></p>
 
                 <!-- Cancel form inside the loop -->
-                <form th:action="@{/userBookingHistory/cancel}" method="post">
+                <form th:if="${(#strings.equalsIgnoreCase(booking.sessionStatus, 'Pending'))}"
+                      th:action="@{/userBookingHistory/cancel}" method="post">
                     <input type="hidden" name="sessionId" th:value="${booking.sessionId}" />
-                    <input type="submit" value="Cancel Booking" />
+                    <input type="submit" class="backTrackButton" value="Cancel Booking" />
                 </form>
 
-                <form th:action="@{/userBookingHistory/completed}" method="post">
+                <form th:if="${(#strings.equalsIgnoreCase(booking.sessionStatus, 'Pending Response'))}"
+                      th:action="@{/userBookingHistory/reject}" method="post">
                     <input type="hidden" name="sessionId" th:value="${booking.sessionId}" />
-                    <input type="submit" value="Complete Booking" />
+                    <input type="submit" class="backTrackButton" value="Reject Driver" />
+                </form>
+
+                <form th:if="${(#strings.equalsIgnoreCase(booking.sessionStatus, 'Pending Response'))}"
+                      th:action="@{/userBookingHistory/acceptResponse}" method="post">
+                    <input type="hidden" name="sessionId" th:value="${booking.sessionId}" />
+                    <input type="submit" class="proceedButton" value="Accept Driver" />
+                </form>
+
+
+                <form th:if="${(#strings.equalsIgnoreCase(booking.sessionStatus, 'Active'))}"
+                      th:action="@{/userBookingHistory/completed}" method="post">
+                    <input type="hidden" name="sessionId" th:value="${booking.sessionId}" />
+                    <input type="submit" class="proceedButton" value="Complete Booking" />
                 </form>
 
             </div>
