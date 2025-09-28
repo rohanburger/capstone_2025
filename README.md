@@ -1,1 +1,2 @@
-![Capstone UML drawio](https://github.com/user-attachments/assets/606eed3c-ab0f-4606-94a4-c5dc8e5f4bc2)
+
+<img width="866" height="930" alt="Capstone UML drawio" src="https://github.com/user-attachments/assets/3bbd1ebb-7371-4dab-b93b-62bb3a232ba7" />
