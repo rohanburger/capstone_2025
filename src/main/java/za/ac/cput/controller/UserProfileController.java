@@ -62,7 +62,7 @@ public class UserProfileController {
             @RequestParam("cardExpiry") String cardExpiry, // Capture updated expiry date
             @RequestParam("cardCvv") String cardCvv,// Capture updated CVV
             @RequestParam("branchId") Long branchId,// Capture selected bank branch ID
-            HttpSession session) {// Access current HTTP session
+            HttpSession session, Model model) {// Access current HTTP session
 
 
         // Retrieve the current user from the database
@@ -93,13 +93,33 @@ public class UserProfileController {
                 .setBankdetails(newBank)
                 .build();
 
-        // Save the updated user back to the database
-        userService.update(updatedUser);
+
+        boolean noChanges =
+                oldUser.getUserName().equals(userName) &&
+                        oldUser.getUserSurname().equals(userSurname) &&
+                        oldUser.getUserPhoneNum().equals(userPhoneNum) &&
+                        oldUser.getUserEmail().equals(email) &&
+                        oldUser.getUserPassword().equals(password) &&
+                        oldBank.getBankCardNum().equals(cardNumber) &&
+                        oldBank.getBankCardDate().equals(cardExpiry) &&
+                        oldBank.getBankCardCVV().equals(cardCvv) &&
+                        oldBank.getBankBranch().getBankBranchId().equals(branchId);
+
+        if (noChanges) {
+            model.addAttribute("message", "No changes were made");
+
+        }else{
+            userService.update(updatedUser);        // Save the updated user back to the database
+            session.setAttribute("user", updatedUser);
+            model.addAttribute("message", "User Profile updated successfully");
+        }
 
         // Update the session with the new user data
-        session.setAttribute("user", updatedUser);
+        model.addAttribute("user", updatedUser);
+        model.addAttribute("bankdetails", updatedUser.getBankdetails());
+        model.addAttribute("branches", bankBranchService.getAll());
 
-        return "redirect:/userProfile";
+        return "userProfile";
     }
 
     @PostMapping("/delete") // Handles POST requests to "/userProfile/delete"

@@ -50,7 +50,8 @@ public class DriverProfileController {
             @RequestParam("password") String password,// Captures the driverPassword from the form
             @RequestParam("licenseNum") String licenseNum,// Captures the driverLicenseNum from the form
             @RequestParam("licensePlateNum") String licensePlateNum,// Captures the driverLicensePlateNum from the form
-            HttpSession session// Captures the session object from the form
+            HttpSession session,// Captures the session object from the form
+            Model model
 
     ){
         Driver oldDriver = driverService.read(driverId); // Calls the read method in the DriverService class to retrieve the driver with the specified driverId
@@ -72,10 +73,27 @@ public class DriverProfileController {
                 .setVehicle(newVehicle)
                 .build();
 
-        driverService.update(updatedDriver);// Calls the update method in the DriverService
-        session.setAttribute("user", updatedDriver);// Sets the updatedDriver object in the session
+        boolean noChanges =
+                oldDriver.getDriverName().equals(driverName) &&
+                        oldDriver.getDriverSurname().equals(driverSurname) &&
+                        oldDriver.getDriverPhoneNum().equals(driverPhoneNum) &&
+                        oldDriver.getDriverEmail().equals(email) &&
+                        oldDriver.getDriverPassword().equals(password) &&
+                        oldDriver.getLicenseNum().equals(licenseNum) &&
+                        oldVehicle.getLicensePlateNum().equals(licensePlateNum);
 
-        return "redirect:/driverProfile";
+        if (noChanges) {
+            model.addAttribute("message", "No changes were made");
+        }else {
+            driverService.update(updatedDriver);// Calls the update method in the DriverService
+            session.setAttribute("user", updatedDriver);// Sets the updatedDriver object in the session
+            model.addAttribute("message", "Driver Profile updated successfully");
+        }
+
+        model.addAttribute("driver", updatedDriver);
+        model.addAttribute("vehicle", updatedDriver.getVehicle());
+
+        return "driverProfile";
     }
 
     @PostMapping("/delete")

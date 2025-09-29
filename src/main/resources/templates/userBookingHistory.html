@@ -50,26 +50,26 @@
 
                 <!-- Cancel form inside the loop -->
                 <form th:if="${(#strings.equalsIgnoreCase(booking.sessionStatus, 'Pending'))}"
-                      th:action="@{/userBookingHistory/cancel}" method="post">
+                      th:action="@{/userBookingHistory/cancel}" onsubmit="return confirm('Are you sure you want to cancel this session?');" method="post">
                     <input type="hidden" name="sessionId" th:value="${booking.sessionId}" />
                     <input type="submit" class="backTrackButton" value="Cancel Booking" />
                 </form>
 
                 <form th:if="${(#strings.equalsIgnoreCase(booking.sessionStatus, 'Pending Response'))}"
-                      th:action="@{/userBookingHistory/reject}" method="post">
+                      th:action="@{/userBookingHistory/reject}" onsubmit="return confirm('Are you sure you want to reject this Driver?');" method="post">
                     <input type="hidden" name="sessionId" th:value="${booking.sessionId}" />
                     <input type="submit" class="backTrackButton" value="Reject Driver" />
                 </form>
 
                 <form th:if="${(#strings.equalsIgnoreCase(booking.sessionStatus, 'Pending Response'))}"
-                      th:action="@{/userBookingHistory/acceptResponse}" method="post">
+                      th:action="@{/userBookingHistory/acceptResponse}"  onsubmit="return confirm('Are you sure you want to accept this Driver?');" method="post">
                     <input type="hidden" name="sessionId" th:value="${booking.sessionId}" />
                     <input type="submit" class="proceedButton" value="Accept Driver" />
                 </form>
 
 
                 <form th:if="${(#strings.equalsIgnoreCase(booking.sessionStatus, 'Active'))}"
-                      th:action="@{/userBookingHistory/completed}" method="post">
+                      th:action="@{/userBookingHistory/completed}"  onsubmit="return confirm('Are you sure you want to complete this session ?');" method="post">
                     <input type="hidden" name="sessionId" th:value="${booking.sessionId}" />
                     <input type="submit" class="proceedButton" value="Complete Booking" />
                 </form>

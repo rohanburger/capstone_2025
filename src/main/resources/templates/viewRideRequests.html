@@ -43,7 +43,7 @@
             <span th:text="${booking.location?.dropoff?.dropoffSuburb}"></span>,
             <span th:text="${booking.location?.dropoff?.dropoffCity}"></span></p>
 
-        <form th:action="@{/viewRideRequests/accept}" method="post">
+        <form th:action="@{/viewRideRequests/accept}" onsubmit="return confirm('Are you sure you want to accept this session?');" method="post">
             <input type="hidden" name="sessionId" th:value="${booking.sessionId}" />
             <label for="price">Enter Price:</label>
             <input type="number" id="price" name="price" step="0.01" required />

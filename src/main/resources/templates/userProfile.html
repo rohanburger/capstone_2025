@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <title>User Profile</title>
 </head>
-<body id="userProfile"  th:data-error="${error}" >
+<body id="userProfile"  th:data-error="${message}" >
 <div class="NavigationFlexContainer">
     <div class="logo"><img th:src="@{/images/lekkaRideLogo.png}" alt="LekkaRide"></div>
     <div class="nav-links">
@@ -55,7 +55,8 @@
         <input type="submit" class="proceedButton" value="Edit Profile">
     </form>
 
-    <form th:action="@{/userProfile/delete}" method="post">
+    <form th:action="@{/userProfile/delete}" onsubmit="return confirm('Are you sure you want to delete your profile? This action cannot be undone.');"
+          method="post">
         <input type="submit" class="backTrackButton" value="Delete Profile">
     </form>
 
@@ -64,9 +65,9 @@
     </form>
 </div>
 <script>
-    const error = document.getElementById('userProfile').dataset.error;
-    if(error) {
-        alert(error);
+    const message = document.getElementById('userProfile').dataset.error;
+    if(message) {
+        alert(message);
     }
 </script>
 </body>
