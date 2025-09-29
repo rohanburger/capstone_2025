@@ -3,6 +3,7 @@ package za.ac.cput.controller;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +29,11 @@ public class DriverLoginController {
     @PostMapping//Hanles the /driverLogin POST request
     public String driverLogin(@RequestParam("email") String email, // Captures the email and password from the form
                               @RequestParam("password") String password,
-                              HttpSession session) {
+                              HttpSession session, Model model) {
         Driver driver = driverService.findByDriverEmailAndDriverPassword(email, password); // Calls the findByEmailAndPassword method in the DriverService class to find the driver with the specified email and password
         if (driver == null) {
-            return "redirect:/driverLogin?error=true";
+            model.addAttribute("error", "Invalid email or password. Please try again.");
+            return "driverLogin";
         }
         session.setAttribute("user", driver); // Set the user attribute in the session to the driver object that was found in the database
         session.setAttribute("role", "driver");// Set the role attribute in the session to "driver"
